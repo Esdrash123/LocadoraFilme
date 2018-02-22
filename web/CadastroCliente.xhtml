@@ -59,7 +59,7 @@ and open the template in the editor.
             <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
                 <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
                 <f:facet name="footer">
-                    <p:commandButton value="cadastrar" update="CadastroClienteform" action="#{bCliente.inserir(bCliente.criarCliente())}"/>
+                    <p:commandButton value="cadastrar" update="CadastroClienteform" action="#{cCliente.inserir(bCliente.criarCliente())}"/>
 
 
                     <p:commandButton value="não" onclick="PF('painel').hide()"/>
