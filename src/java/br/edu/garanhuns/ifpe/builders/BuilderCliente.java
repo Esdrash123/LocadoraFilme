@@ -59,7 +59,7 @@ public class BuilderCliente {
         this.endereco = endereco;
     }
 
-    public String getPendencia() {
+    public String isPendencia() {
         return pendencia;
     }
 
