@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Cadastro Cliente</title><br/>
+    </h:head>
+    <h:body>
+        <br></br>
+        <ui:include src='Menu.xhtml'/>
+        <p:messages/>
+        <h:form id="CadastroClienteform">
+            <p:fieldset legend="Cadastro de Cliente" style="width: 50%">
+                <p:panelGrid columns="3">
+
+                    <h:outputText value="Nome"/>
+                    <p:inputText id="txtNome" value="#{bCliente.nome}" required="true"
+                                 requiredMessage="O nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+
+
+                    <h:outputText value="Cpf"/>
+                    <p:inputText id="txtCpf" value="#{bCliente.cpf}" required="true"
+                                 requiredMessage="O cpf é obrigatória"/>
+                    <p:message for="txtCpf"/>
+
+                    <h:outputText value="Telefone"/>
+                    <p:inputText id="txtTelefone" value="#{bCliente.telefone}" required="true"
+                                requiredMessage="O telefone é obrigatório"/>
+                    <p:message for="txtTelefone"/>
+
+                    <h:outputText value="Endereco"/>
+                    <p:inputText id="txtEndereco" value="#{bCliente.endereco}" required="true"
+                                requiredMessage="O Endereco é obrigatoria"/>
+                    <p:message for="txtEndereco"/>
+                     
+                    <h:outputText value="Pendencia"/>
+                    <p:inputText id="txtPendencia" value="#{bCliente.pendencia}" required="true"
+                                requiredMessage="A pendencia é obrigatoria"/>
+                    <p:message for="txtPendencia"/>
+
+                     <h:outputText value="Dependentes"/>
+                    <p:inputText id="txtDependentes" value="#{bCliente.dependentes}" required="false"
+                                requiredMessage="O dependentes não é obrigatoria"/>
+                    <p:message for="txtDependentes"/>
+                    
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
+            </p:fieldset>
+
+            <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
+                <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
+                <f:facet name="footer">
+                    <p:commandButton value="cadastrar" update="CadastroClienteform" action="#{bCliente.inserir(bCliente.criarCliente())}"/>
+
+
+                    <p:commandButton value="não" onclick="PF('painel').hide()"/>
+                </f:facet>
+            </p:dialog>
+
+        </h:form>
+
+    </h:body>
+</html>
