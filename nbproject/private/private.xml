@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/src/java/br/edu/garanhuns/ifpe/builders/BuilderCliente.java</file>
-            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/index.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/Menu.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/CadastroFilme.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/CadastroCliente.xhtml</file>
             <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/ApresentaClientes.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/ApresentaFilmes.xhtml</file>
             <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/src/java/br/edu/garanhuns/ifpe/entidades/Cliente.java</file>
         </group>
     </open-files>

@@ -27,6 +27,8 @@ public class Relatorio {
     
     @ManyToOne
     private Cliente cliente;
+   @Column(length = 8)
+    private int cod;
     @Column(length = 8, nullable = false)
     private Date dataEntrega;
     @Column(length = 30)
@@ -36,18 +38,29 @@ public class Relatorio {
     @Column(length = 20)
     private String tempoAtraso;
 
-    public Relatorio(Cliente cliente, Date dataEntrega, double valorMulta, Date dataEmprestimo, String tempoAtraso) {
+    public Relatorio(int cod,Cliente cliente, Date dataEntrega, double valorMulta, Date dataEmprestimo, String tempoAtraso) {
         this.cliente = cliente;
         this.dataEntrega = dataEntrega;
         this.valorMulta = valorMulta;
         this.dataEmprestimo = dataEmprestimo;
         this.tempoAtraso = tempoAtraso;
+        this.cod=cod;
     }
 
     @Deprecated
     public Relatorio() {
     }
 
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    
+    
     public Cliente getCliente() {
         return cliente;
     }

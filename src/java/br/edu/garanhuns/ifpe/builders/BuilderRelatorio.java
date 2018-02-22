@@ -15,14 +15,16 @@ import javax.faces.bean.ViewScoped;
  *
  * @author esdra
  */
-@ManagedBean(name="bRelatorio")
+@ManagedBean(name = "bRelatorio")
 @ViewScoped
 public class BuilderRelatorio {
+
     private Cliente cliente;
     private Date dataEntrega;
     private double valorMulta;
     private Date dataEmprestimo;
     private String tempoAtraso;
+    private int cod;
 
     public Cliente getCliente() {
         return cliente;
@@ -63,7 +65,16 @@ public class BuilderRelatorio {
     public void setTempoAtraso(String tempoAtraso) {
         this.tempoAtraso = tempoAtraso;
     }
-    public Relatorio criarRelatorio (){
-        return new Relatorio(cliente,dataEntrega, valorMulta,dataEmprestimo,tempoAtraso);
+
+    public Relatorio criarRelatorio() {
+        return new Relatorio(cod,cliente, dataEntrega, valorMulta, dataEmprestimo, tempoAtraso);
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }
