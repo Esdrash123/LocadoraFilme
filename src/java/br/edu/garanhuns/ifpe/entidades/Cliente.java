@@ -33,12 +33,12 @@ public class Cliente {
     @Column(length = 100)
     private String endereco;
     @Column(length = 100)
-    private boolean pendencia;
+    private String pendencia;
     @OneToMany
     private List<Dependente> dependentes;
  
 
-    public Cliente(String nome, String cpf, String endereco, boolean pendencia) {
+    public Cliente(String nome, String cpf, String endereco, String pendencia) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -89,11 +89,11 @@ public class Cliente {
         this.dependentes = dependentes;
     }
 
-    public boolean isPendencia() {
+    public String getPendencia() {
         return pendencia;
     }
 
-    public void setPendencia(boolean pendencia) {
+    public void setPendencia(String pendencia) {
         this.pendencia = pendencia;
     }
 }

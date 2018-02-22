@@ -24,7 +24,7 @@ public class BuilderCliente {
     private String cpf;
     private String telefone;
     private String endereco;
-    private boolean pendencia;
+    private String pendencia;
     private List<Dependente> dependentes;
    
     public String getNome() {
@@ -59,11 +59,11 @@ public class BuilderCliente {
         this.endereco = endereco;
     }
 
-    public boolean isPendencia() {
+    public String getPendencia() {
         return pendencia;
     }
 
-    public void setPendencia(boolean pendencia) {
+    public void setPendencia(String pendencia) {
         this.pendencia = pendencia;
     }
 
