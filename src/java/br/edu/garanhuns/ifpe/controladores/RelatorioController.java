@@ -34,19 +34,13 @@ public class RelatorioController {
 
     public String inserir(Relatorio relatorio) {
 
-        
-        if (((RepositorioRelatorio) this.repositorioRelatorio).recuperar(relatorio.getCod()) != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Relatorio com o mesmo codigo já cadastrado!"));
-            return null;
-
-        }
 
         this.repositorioRelatorio.inserir(relatorio);
 
         FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage("OK", "O Relatorio '" + relatorio.getCod()+ "' foi cadastrado com sucesso!"));
 
-        return "Menu.xhtml";
+        return "ApresentaAlugel.xhtml";
     }
 
     public String atualizar(Relatorio relatorio) {
@@ -64,7 +58,7 @@ public class RelatorioController {
 
         this.repositorioRelatorio.alterar(relatorio);
 
-        return "ApresentaFilme.xhtml";
+        return "ApresentaFilmes.xhtml";
     }
 
     public void deletar(Relatorio filme) {

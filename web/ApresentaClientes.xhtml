@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>Apresentar Clientes</title>
@@ -16,7 +15,7 @@
         <p:messages />
         <h:form id="formApresentarFilme">
             <p:dataTable id="tabelaFilme" value="#{cCliente.cliente}" var="item"
-                         rowKey="#{item.id}" paginator="true" rows="6" selectionMode="single"
+                         rowKey="#{item.cpf}" paginator="true" rows="6" selectionMode="single"
                          selection="#{cCliente.selectCliente}">
 
                 <p:column sortBy="#{item.nome}" filterBy="#{item.nome}" headerText="nome" footerText="nome">
@@ -26,13 +25,13 @@
                 <p:column sortBy="#{item.cpf}" filterBy="#{item.cpf}" headerText="cpf" footerText="cpf" >
                     <h:outputText value="#{item.cpf}"/>
                 </p:column>
-                <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}" headerText="telefone" footerText="telefone" >
+                <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}" headerText="pendencia" footerText="pendencia" >
                     <h:outputText value="#{item.telefone}"/>
                 </p:column>
-                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}" headerText="endereco" footerText="endereco" >
+                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}" headerText="telefone" footerText="telefone" >
                     <h:outputText value="#{item.endereco}"/>
                 </p:column>
-                <p:column sortBy="#{item.pendencia}" filterBy="#{item.pendencia}" headerText="pendencia" footerText="pendencia" >
+                <p:column sortBy="#{item.pendencia}" filterBy="#{item.pendencia}" headerText="endereco" footerText="endereco" >
                     <h:outputText value="#{item.pendencia}"/>
                 </p:column>
                 <p:column sortBy="#{item.dependentes}" filterBy="#{item.dependentes}" headerText="dependentes" footerText="dependentes" >
@@ -40,37 +39,14 @@
                 </p:column>
 
             </p:dataTable>
-            <p:commandButton value="Visualizar dados do Cliente" 
-                             update="dial1" oncomplete="PF('painel1').show()"/>
+
             <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
                 <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                <p:commandButton value="Nï¿½o" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
             <p:dialog id="dial1" closable="false" resizable="false" modal="true"
                       visible="false" widgetVar="painel1" header="Dados">
 
-                <p:panelGrid columns="2">
-
-                    <h:outputText value="Nome"/>
-                    <h:outputText value="#{cCliente.selectCliente.nome}"/>
-
-                    <h:outputText value="cpf"/>
-                    <h:outputText value="#{cCliente.selectCliente.cpf()}"/>
-
-                    <h:outputText value="Telefone"/>
-                    <h:outputText value="#{cCliente.selectCliente.telefone}"/>
-
-                    <h:outputText value="Endereço"/>
-                    <h:outputText value="#{cCliente.selectCliente.endereco}"/>
-
-                    <h:outputText value="Pendências"/>
-                    <h:outputText value="#{cCliente.selectCliente.pendencia}"/>
-
-                    <h:outputText value="Dependentes"/>
-                    <h:outputText value="#{cCliente.selectCliente.dependentes}"/>
-
-
-                </p:panelGrid>
 
                 <p:commandLink value="fechar" 
                                oncomplete="PF('painel1').hide()"/>

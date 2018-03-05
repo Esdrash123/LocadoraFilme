@@ -1,103 +1,61 @@
-<?xml version="1.0" encoding='UTF-8' ?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Cadastro de Revisao</title>
+        <title>Cadastro de aluguel</title><br/>
     </h:head>
     <h:body>
-        <c:choose>
+        <br></br>
+        <ui:include src='Menu.xhtml'/>
+        <p:messages/>
+        <h:form id="CadastroRelatorioform">
+            <p:fieldset legend="Cadastro de Aluguel" style="width: 50%">
+                <p:panelGrid columns="3">
 
-            <ui:include src="Menu.xhtml"/>
+                    <h:outputText value="Cliente"/>
+                    <p:inputText id="txtCliente" value="#{bRelatorio.cliente}" required="true"
+                                 requiredMessage="O cliente é obrigatório"/>
+                    <p:message for="txtCliente"/>
 
-            <h:form id="form">
 
-                <p:tab id="dataEmprestimo" title="Aluguel">
-                    <p:panel header="Selecione a data e/ou a hora da revisao">
+                    <h:outputText value="Cod"/>
+                    <p:inputText id="txtCod" value="#{bRelatorio.cod}" required="true"
+                                 requiredMessage="O cod é obrigatória"/>
+                    <p:message for="txtCod"/>
 
-                        <h:panelGrid columns="3">
-                            <p:outputLabel for="inputData" value="Data do emprestimo:" />
-                            <p:calendar id="inputData" value="#{bRelatorio.dataEmprestimo}" pattern=" dd/MM/yyyy HH:mm:ss" 
-                                        required="true" requiredMessage="Selecione a data e a hora da revisao"/>
-                            <p:message id="messageData" for="inputData"/>
+                    <h:outputText value="DataEntrega"/>
+                    <p:inputText id="txtDataEntrega" value="#{bRelatorio.dataEntrega}" required="true"
+                                 requiredMessage="A data da entrega é obrigatória"/>
+                    <p:message for="txtDataEntrega"/>
 
-                        </h:panelGrid>
-                    </p:panel>
-                    <p:panel header="Valor da multa">
+                    <h:outputText value="ValorEmprestimo"/>
+                    <p:inputText id="txtValorEmprestimo" value="#{bRelatorio.valorEmprestimo}" required="true"
+                                 requiredMessage="O valor do emprestimo é obrigatoria"/>
+                    <p:message for="txtValorEmprestimo"/>
 
-                        <h:panelGrid columns="3">
-                            <p:outputLabel for="inputValor" value="Valor da multa" />
 
-                            <p:inputText id="inputValor" value="#{bRelatorio.valorMulta}" required="true" 
-                                         requiredMessage="Digite o valor">
-                            </p:inputText>
+                    <h:outputText value="DataEmprestimo"/>
+                    <p:inputText id="txtDataEmprestimo" value="#{bRelatorio.dataEmprestimo}" required="true"
+                                 requiredMessage="a data de emprestimo é obrigatoria"/>
+                    <p:message for="txtDataEmprestimo"/>
 
-                            <p:message id="messageValor" for="inputValor"/>
-                        </h:panelGrid>
-                    </p:panel>
-                </p:tab>
 
-                <p:tab id="nomeRelatorio" title="Lista de Alugueis">
-                    <p:panel header="Selecione a moto para a Revisao">
-                        <p:messages/>
-                        <h:panelGrid>
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
+            </p:fieldset>
 
-                            <p:dataTable id="tabelaRelatorio" value="#{cRelatorio.relatorio}" var="item"
-                                         rowKey="#{item.id}" paginator="true" rows="6" selectionMode="single" 
-                                         selection="#{bRelatorio.relatorio}">
+            <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
+                <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
 
-                                <p:column sortBy="#{item.cliente}" filterBy="#{item.cliente}" headerText="cliente" footerText="cliente">
-                                    <h:outputText value="#{item.cliente}"/>
-                                </p:column>
+                <p:commandButton value="cadastrar" update="CadastroRelatorioform" action="#{cRelatorio.inserir(bRelatorio.criarRelatorio())}"/>
 
-                                <p:column sortBy="#{item.cod}" filterBy="#{item.cod}" headerText="codigo" footerText="codigo">
-                                    <h:outputText value="#{item.cod}"/>
-                                </p:column>
-                                <p:column sortBy="#{item.dataEmprestimo}" filterBy="#{item.dataEmprestimo}" headerText="dataEmprestimo" footerText="dataEmprestimo">
-                                    <h:outputText value="#{item.dataEmprestimo}"/>
-                                </p:column>
 
-                                <p:column sortBy="#{item.dataEntrega}" filterBy="#{item.dataEntrega}" headerText="dataEntrega" footerText="dataEntrega">
-                                    <h:outputText value="#{item.dataEntrega}"/>
-                                </p:column>
+                <p:commandButton value="não" onclick="PF('painel').hide()"/>
 
-                            </p:dataTable>  
-                        </h:panelGrid>
+            </p:dialog>
 
-                        <h:outputText value="cliente"/>
-                        <p:inputText id="inputMotor" value="#{bRelatorio.cliente}" maxlength="1"/>
-                        <p:message id="messageMotor" for="inputcliente"/>
-
-                        <h:outputText value="codigo"/>
-                        <p:inputText id="inputRoda" value="#{bRelatorio.cod}" maxlength="1"/>
-                        <p:message id="messageRoda" for="inputcodigo"/>
-
-                        <h:outputText value="data de emprestimo"/>
-                        <p:inputText id="inputVela" value="#{bRelatorio.dataEmprestimo}" maxlength="1"/>
-                        <p:message id="messageVela" for="inputdataemprestimo"/>
-
-                        <h:outputText value="data de entrega"/>
-                        <p:inputText id="inputEixo" value="#{bRelatorio.dataEntrega}" maxlength="1"/>
-                        <p:message id="messageEixo" for="inputdataentrega"/>
-
-                        <p:commandButton value="Cadastrar" action="#{controleRevisao.inserirRevisao(crevisao.construirRevisao())}"
-                                         update="form" style="left:600px"/>
-                    </p:panel>
-                </p:tab>
-
-            </h:form>
-
-            </c:when>
-        </c:choose>
+        </h:form>
 
     </h:body>
 </html>

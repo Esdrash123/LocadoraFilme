@@ -34,24 +34,21 @@ and open the template in the editor.
 
                     <h:outputText value="Telefone"/>
                     <p:inputText id="txtTelefone" value="#{bCliente.telefone}" required="true"
-                                requiredMessage="O telefone é obrigatório"/>
+                                 requiredMessage="O telefone é obrigatório"/>
                     <p:message for="txtTelefone"/>
 
                     <h:outputText value="Endereco"/>
                     <p:inputText id="txtEndereco" value="#{bCliente.endereco}" required="true"
-                                requiredMessage="O Endereco é obrigatoria"/>
+                                 requiredMessage="O Endereco é obrigatoria"/>
                     <p:message for="txtEndereco"/>
-                     
+
                     <h:outputText value="Pendencia"/>
                     <p:inputText id="txtPendencia" value="#{bCliente.pendencia}" required="true"
-                                requiredMessage="A pendencia é obrigatoria"/>
+                                 requiredMessage="A pendencia é obrigatoria"/>
                     <p:message for="txtPendencia"/>
 
-                     <h:outputText value="Dependentes"/>
-                    <p:inputText id="txtDependentes" value="#{bCliente.dependentes}" required="false"
-                                requiredMessage="O dependentes não é obrigatoria"/>
-                    <p:message for="txtDependentes"/>
-                    
+
+
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>

@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/Menu.xhtml</file>
             <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/CadastroRelatorio.xhtml</file>
-            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/src/java/br/edu/garanhuns/ifpe/entidades/Relatorio.java</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/CadastroCliente.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/ApresentaAlugel.xhtml</file>
+            <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/web/ApresentaClientes.xhtml</file>
             <file>file:/C:/Users/esdra/Desktop/LocadoraFilme/src/java/br/edu/garanhuns/ifpe/controladores/RelatorioController.java</file>
         </group>
     </open-files>

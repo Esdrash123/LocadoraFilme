@@ -24,27 +24,27 @@ public class Relatorio {
     @Id
     @GeneratedValue
     private int id;
-    
+
     @ManyToOne
     private Cliente cliente;
-   @Column(length = 8)
+    @Column(length = 100)
     private int cod;
-    @Column(length = 8, nullable = false)
+    @Column(length = 100, nullable = false)
     private Date dataEntrega;
     @Column(length = 30)
+    private double valorEmprestimo;
+    @Column(length = 30)
     private double valorMulta;
-    @Column(length = 8)
+    @Column(length = 100)
     private Date dataEmprestimo;
-    @Column(length = 20)
-    private String tempoAtraso;
 
-    public Relatorio(int cod,Cliente cliente, Date dataEntrega, double valorMulta, Date dataEmprestimo, String tempoAtraso) {
+    public Relatorio(int cod, Cliente cliente, Date dataEntrega, double valorEmprestimo, double valorMulta, Date dataEmprestimo) {
         this.cliente = cliente;
         this.dataEntrega = dataEntrega;
+        this.valorEmprestimo = valorEmprestimo;
         this.valorMulta = valorMulta;
         this.dataEmprestimo = dataEmprestimo;
-        this.tempoAtraso = tempoAtraso;
-        this.cod=cod;
+        this.cod = cod;
     }
 
     @Deprecated
@@ -59,8 +59,14 @@ public class Relatorio {
         this.cod = cod;
     }
 
-    
-    
+    public double getValorEmprestimo() {
+        return valorEmprestimo;
+    }
+
+    public void setValorEmprestimo(double valorEmprestimo) {
+        this.valorEmprestimo = valorEmprestimo;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -91,14 +97,6 @@ public class Relatorio {
 
     public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
-    }
-
-    public String getTempoAtraso() {
-        return tempoAtraso;
-    }
-
-    public void setTempoAtraso(String tempoAtraso) {
-        this.tempoAtraso = tempoAtraso;
     }
 
 }

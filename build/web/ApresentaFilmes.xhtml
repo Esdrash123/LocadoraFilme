@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>Apresentar Filmes</title>
@@ -16,56 +15,40 @@
         <p:messages />
         <h:form id="formApresentarFilme">
             <p:dataTable id="tabelaFilme" value="#{cFilme.filme}" var="item"
-                         rowKey="#{item.id}" paginator="true" rows="6" selectionMode="single"
+                         rowKey="#{item.titulo}" paginator="true" rows="6" selectionMode="single"
                          selection="#{cFilme.selectFilme}">
 
-                        <p:column sortBy="#{item.titulo}" filterBy="#{item.titulo}" headerText="Titulo" footerText="Titulo">
-                            <h:outputText value="#{item.titulo}"/>
-                        </p:column>
+                <p:column sortBy="#{item.titulo}" filterBy="#{item.titulo}" headerText="Titulo" footerText="Titulo">
+                    <h:outputText value="#{item.titulo}"/>
+                </p:column>
 
-                        <p:column sortBy="#{item.sinopse}" filterBy="#{item.sinopse}" headerText="Sinopse" footerText="Sinopse" >
-                            <h:outputText value="#{item.sinopse}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.dataLancamento}" filterBy="#{item.dataLancamento}" headerText="Data de Lancamento" footerText="Data de Lancamento" >
-                            <h:outputText value="#{item.dataLancamento}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.faixaIndicativa}" filterBy="#{item.faixaIndicativa}" headerText="Faixa Indicativa" footerText="Faixa Indicativa" >
-                            <h:outputText value="#{item.faixaIndicativa}"/>
-                        </p:column>
-                       
-                    </p:dataTable>
-                        <p:commandButton value="Visualizar dados do filme" 
-                                         update="dial1" oncomplete="PF('painel1').show()"/>
-                          <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:confirmDialog>
-                    <p:dialog id="dial1" closable="false" resizable="false" modal="true"
-                              visible="false" widgetVar="painel1" header="Dados">
+                <p:column sortBy="#{item.sinopse}" filterBy="#{item.sinopse}" headerText="Sinopse" footerText="Sinopse" >
+                    <h:outputText value="#{item.sinopse}"/>
+                </p:column>
+                <p:column sortBy="#{item.dataLancamento}" filterBy="#{item.dataLancamento}" headerText="Data de Lancamento" footerText="Data de Lancamento" >
+                    <h:outputText value="#{item.dataLancamento}"/>
+                </p:column>
+                <p:column sortBy="#{item.faixaIndicativa}" filterBy="#{item.faixaIndicativa}" headerText="Faixa Indicativa" footerText="Faixa Indicativa" >
+                    <h:outputText value="#{item.faixaIndicativa}"/>
+                </p:column>
 
-                        <p:panelGrid columns="2">
+            </p:dataTable>
 
-                            <h:outputText value="Titulo"/>
-                            <h:outputText value="#{cFilme.selectFilme.titulo}"/>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Nï¿½o" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+            <p:dialog id="dial1" closable="false" resizable="false" modal="true"
+                      visible="false" widgetVar="painel1" header="Dados">
 
-                            <h:outputText value="Sinopse"/>
-                            <h:outputText value="#{cFilme.selectFilme.sinopse()}"/>
 
-                            <h:outputText value="dataLancamento"/>
-                            <h:outputText value="#{cFilme.selectFilme.dataLancamento}"/>
 
-                            <h:outputText value="Faixa Indicativa"/>
-                            <h:outputText value="#{cFilme.selectFilme.faixaIndicativa}"/>
+                <p:commandLink value="fechar" 
+                               oncomplete="PF('painel1').hide()"/>
+            </p:dialog>
 
-                           
-                        </p:panelGrid>
+        </h:form>
 
-                        <p:commandLink value="fechar" 
-                                       oncomplete="PF('painel1').hide()"/>
-                    </p:dialog>
 
-                </h:form>
-
-       
     </h:body>
 </html>

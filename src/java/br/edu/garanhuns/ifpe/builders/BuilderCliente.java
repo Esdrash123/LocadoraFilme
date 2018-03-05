@@ -8,6 +8,7 @@ package br.edu.garanhuns.ifpe.builders;
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Dependente;
 import br.edu.garanhuns.ifpe.entidades.Filme;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -18,7 +19,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean(name="bCliente")
 @ViewScoped
-public class BuilderCliente {
+public class BuilderCliente implements Serializable {
 
     private String nome;
     private String cpf;
@@ -59,7 +60,7 @@ public class BuilderCliente {
         this.endereco = endereco;
     }
 
-    public String isPendencia() {
+    public String getPendencia() {
         return pendencia;
     }
 
@@ -77,7 +78,7 @@ public class BuilderCliente {
 
  
      public Cliente criarCliente (){
-        return new Cliente(nome, cpf, endereco,pendencia);
+        return new Cliente(nome, cpf,telefone, endereco,pendencia);
     }
 
 }

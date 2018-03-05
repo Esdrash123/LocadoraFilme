@@ -21,9 +21,9 @@ public class BuilderRelatorio {
 
     private Cliente cliente;
     private Date dataEntrega;
+    private double valorEmprestimo;
     private double valorMulta;
     private Date dataEmprestimo;
-    private String tempoAtraso;
     private int cod;
 
     public Cliente getCliente() {
@@ -58,16 +58,9 @@ public class BuilderRelatorio {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public String getTempoAtraso() {
-        return tempoAtraso;
-    }
-
-    public void setTempoAtraso(String tempoAtraso) {
-        this.tempoAtraso = tempoAtraso;
-    }
 
     public Relatorio criarRelatorio() {
-        return new Relatorio(cod,cliente, dataEntrega, valorMulta, dataEmprestimo, tempoAtraso);
+        return new Relatorio(cod, cliente, dataEntrega, valorEmprestimo, valorMulta, dataEmprestimo);
     }
 
     public int getCod() {
@@ -77,4 +70,13 @@ public class BuilderRelatorio {
     public void setCod(int cod) {
         this.cod = cod;
     }
+
+    public double getValorEmprestimo() {
+        return valorEmprestimo;
+    }
+
+    public void setValorEmprestimo(double valorEmprestimo) {
+        this.valorEmprestimo = valorEmprestimo;
+    }
+
 }

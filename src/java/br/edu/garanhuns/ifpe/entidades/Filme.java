@@ -31,7 +31,7 @@ public class Filme {
     @Column(length = 500)
     private String sinopse;
 
-    @Column(length = 8, nullable = false)
+    @Column(length = 100, nullable = false)
     private String dataLancamento;
 
     @Column(length = 2)

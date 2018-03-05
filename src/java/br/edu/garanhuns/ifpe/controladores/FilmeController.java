@@ -32,16 +32,6 @@ public class FilmeController {
 
     public String inserir(Filme filme) {
 
-        if (filme.getTitulo() != null) {
-            FacesContext.getCurrentInstance().addMessage("form:inputNoTitule", new FacesMessage("Erro", "Já existe um filme com este titulo"));
-            return null;
-        }
-        if (((RepositorioFilme) this.repositorioFilme).recuperarTitulo(filme.getTitulo()) != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Filme com o mesmo titulo já cadastrado!"));
-            return null;
-
-        }
-
         this.repositorioFilme.inserir(filme);
 
         FacesContext.getCurrentInstance().

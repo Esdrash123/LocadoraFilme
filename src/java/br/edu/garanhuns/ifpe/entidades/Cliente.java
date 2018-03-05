@@ -28,7 +28,7 @@ public class Cliente {
     private String nome;
     @Column(length = 11)
     private String cpf;
-    @Column(length = 11)
+    @Column(length = 20)
     private String telefone;
     @Column(length = 100)
     private String endereco;
@@ -36,18 +36,18 @@ public class Cliente {
     private String pendencia;
     @OneToMany
     private List<Dependente> dependentes;
- 
 
-    public Cliente(String nome, String cpf, String endereco, String pendencia) {
+    public Cliente(String nome, String cpf, String endereco, String pendencia, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
+        this.telefone = telefone;
         this.endereco = endereco;
         this.pendencia = pendencia;
     }
-  @Deprecated
+
+    @Deprecated
     public Cliente() {
     }
-
 
     public String getNome() {
         return nome;

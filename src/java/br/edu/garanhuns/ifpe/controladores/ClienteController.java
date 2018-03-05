@@ -35,25 +35,12 @@ public class ClienteController {
     
     public String inserir(Cliente cliente) {
 
-        String cpf = cliente.getCpf();
-        
-        if (cpf.length() != 11) {
-            FacesContext.getCurrentInstance().addMessage("form:inputCpf", new FacesMessage("Erro", "O cpf tem que ter 11 DIGITOS"));
-            return null;
-        }
-
-        if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente como mesmo Cpf já cadastrado!"));
-            return null;
-
-        }
-
         this.repositorioCliente.inserir(cliente);
 
         FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage("Parabéns", "O cliente '" + cliente.getNome() + "' foi cadastrado com sucesso!"));
         
-        return "CadastroCliente.xhtml";
+        return "ApresentarCliente.xhtml";
     }
 
     public String atualizar(Cliente cliente) {
@@ -76,7 +63,7 @@ public class ClienteController {
 
         this.repositorioCliente.alterar(cliente);
 
-        return "ApresentaClente.xhtml";
+        return "ApresentaCliente.xhtml";
     }
 
     public void deletar(Cliente cliente) {
