@@ -9,34 +9,34 @@
         <br></br>
         <ui:include src='Menu.xhtml'/>
         <p:messages/>
-        <h:form id="CadastroRelatorioform">
+        <h:form id="CadastroAluguelform">
             <p:fieldset legend="Cadastro de Aluguel" style="width: 50%">
                 <p:panelGrid columns="3">
 
                     <h:outputText value="Cliente"/>
-                    <p:inputText id="txtCliente" value="#{bRelatorio.cliente}" required="true"
+                    <p:inputText id="txtCliente" value="#{bAluguel.cliente}" required="true"
                                  requiredMessage="O cliente é obrigatório"/>
                     <p:message for="txtCliente"/>
 
 
                     <h:outputText value="Cod"/>
-                    <p:inputText id="txtCod" value="#{bRelatorio.cod}" required="true"
+                    <p:inputText id="txtCod" value="#{bAluguel.cod}" required="true"
                                  requiredMessage="O cod é obrigatória"/>
                     <p:message for="txtCod"/>
 
                     <h:outputText value="DataEntrega"/>
-                    <p:inputText id="txtDataEntrega" value="#{bRelatorio.dataEntrega}" required="true"
+                    <p:inputText id="txtDataEntrega" value="#{bAluguel.dataEntrega}" required="true"
                                  requiredMessage="A data da entrega é obrigatória"/>
                     <p:message for="txtDataEntrega"/>
 
                     <h:outputText value="ValorEmprestimo"/>
-                    <p:inputText id="txtValorEmprestimo" value="#{bRelatorio.valorEmprestimo}" required="true"
+                    <p:inputText id="txtValorEmprestimo" value="#{bAluguel.valorEmprestimo}" required="true"
                                  requiredMessage="O valor do emprestimo é obrigatoria"/>
                     <p:message for="txtValorEmprestimo"/>
 
 
                     <h:outputText value="DataEmprestimo"/>
-                    <p:inputText id="txtDataEmprestimo" value="#{bRelatorio.dataEmprestimo}" required="true"
+                    <p:inputText id="txtDataEmprestimo" value="#{bAluguel.dataEmprestimo}" required="true"
                                  requiredMessage="a data de emprestimo é obrigatoria"/>
                     <p:message for="txtDataEmprestimo"/>
 
@@ -48,7 +48,7 @@
             <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
                 <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
 
-                <p:commandButton value="cadastrar" update="CadastroRelatorioform" action="#{cRelatorio.inserir(bRelatorio.criarRelatorio())}"/>
+                <p:commandButton value="cadastrar" update="CadastroAluguelform" action="#{cAluguel.inserir(bAluguel.criarRelatorio())}"/>
 
 
                 <p:commandButton value="não" onclick="PF('painel').hide()"/>

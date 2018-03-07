@@ -11,7 +11,7 @@
     <mapping class="br.edu.garanhuns.ifpe.entidades.Cliente"/>
     <mapping class="br.edu.garanhuns.ifpe.entidades.Filme"/>
     <mapping class="br.edu.garanhuns.ifpe.entidades.Dependente"/>
-    <mapping class="br.edu.garanhuns.ifpe.entidades.Relatorio"/>
+    <mapping class="br.edu.garanhuns.ifpe.entidades.Aluguel"/>
 
   </session-factory>
 </hibernate-configuration>

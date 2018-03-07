@@ -18,8 +18,8 @@ import javax.persistence.Table;
  * @author esdra
  */
 @Entity
-@Table(name = "Relatorio")
-public class Relatorio {
+@Table(name = "Aluguel")
+public class Aluguel {
 
     @Id
     @GeneratedValue
@@ -38,7 +38,7 @@ public class Relatorio {
     @Column(length = 100)
     private Date dataEmprestimo;
 
-    public Relatorio(int cod, Cliente cliente, Date dataEntrega, double valorEmprestimo, double valorMulta, Date dataEmprestimo) {
+    public Aluguel(int cod, Cliente cliente, Date dataEntrega, double valorEmprestimo, double valorMulta, Date dataEmprestimo) {
         this.cliente = cliente;
         this.dataEntrega = dataEntrega;
         this.valorEmprestimo = valorEmprestimo;
@@ -48,7 +48,7 @@ public class Relatorio {
     }
 
     @Deprecated
-    public Relatorio() {
+    public Aluguel() {
     }
 
     public int getCod() {

@@ -6,10 +6,9 @@
 package br.edu.garanhuns.ifpe.controladores;
 
 import br.edu.garanhuns.ifpe.entidades.Cliente;
-import br.edu.garanhuns.ifpe.entidades.Relatorio;
-import br.edu.garanhuns.ifpe.model.dao.ManagerDao;
+import br.edu.garanhuns.ifpe.entidades.Aluguel;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
-import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioRelatorio;
+import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioAluguel;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,19 +19,19 @@ import javax.faces.context.FacesContext;
  *
  * @author esdra
  */
-@ManagedBean(name = "cRelatorio")
+@ManagedBean(name = "cAluguel")
 @SessionScoped
 
-public class RelatorioController {
+public class AluguelController {
 
-      private RepositorioGenerico<Relatorio, String> repositorioRelatorio = null;
-    private Relatorio selectRelatorio;
+      private RepositorioGenerico<Aluguel, String> repositorioRelatorio = null;
+    private Aluguel selectAluguel;
 
-    public RelatorioController() {
-        this.repositorioRelatorio = new RepositorioRelatorio();
+    public AluguelController() {
+        this.repositorioRelatorio = new RepositorioAluguel();
     }
 
-    public String inserir(Relatorio relatorio) {
+    public String inserir(Aluguel relatorio) {
 
 
         this.repositorioRelatorio.inserir(relatorio);
@@ -43,41 +42,41 @@ public class RelatorioController {
         return "ApresentaAlugel.xhtml";
     }
 
-    public String atualizar(Relatorio relatorio) {
+    public String atualizar(Aluguel aluguel) {
      
 
-        if (((RepositorioRelatorio) this.repositorioRelatorio).recuperar(relatorio.getCod()) != null) {
+        if (((RepositorioAluguel) this.repositorioRelatorio).recuperar(aluguel.getCod()) != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Filme como mesmo titulo já cadastrado!"));
             return null;
 
         }
 
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Parabéns", "o filme '" + relatorio.getCod() + "' , com faxetaria de '"
-                        + relatorio.getDataEntrega()+ "' foi alterado com sucesso!"));
+                new FacesMessage("Parabéns", "o filme '" + aluguel.getCod() + "' , com faxetaria de '"
+                        + aluguel.getDataEntrega()+ "' foi alterado com sucesso!"));
 
-        this.repositorioRelatorio.alterar(relatorio);
+        this.repositorioRelatorio.alterar(aluguel);
 
         return "ApresentaFilmes.xhtml";
     }
 
-    public void deletar(Relatorio filme) {
+    public void deletar(Aluguel filme) {
         this.repositorioRelatorio.deletar(filme);
     }
 
-    public Relatorio recuperaFilme(String cod) {
+    public Aluguel recuperaFilme(String cod) {
         return this.repositorioRelatorio.recuperar(cod);
     }
 
-    public List<Relatorio> getRelatorio() {
+    public List<Aluguel> getAluguel() {
         return this.repositorioRelatorio.recuperarTodos();
     }
 
-    public Relatorio getSelectRelatorio() {
-        return selectRelatorio;
+    public Aluguel getSelectAluguel() {
+        return selectAluguel;
     }
 
-    public void setSelectFilme(Relatorio selectRelatorio) {
-        this.selectRelatorio = selectRelatorio;
+    public void setSelectFilme(Aluguel selectAluguel) {
+        this.selectAluguel = selectAluguel;
     }
 }

@@ -6,7 +6,7 @@
 package br.edu.garanhuns.ifpe.builders;
 
 import br.edu.garanhuns.ifpe.entidades.Cliente;
-import br.edu.garanhuns.ifpe.entidades.Relatorio;
+import br.edu.garanhuns.ifpe.entidades.Aluguel;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,9 +15,9 @@ import javax.faces.bean.ViewScoped;
  *
  * @author esdra
  */
-@ManagedBean(name = "bRelatorio")
+@ManagedBean(name = "bAluguel")
 @ViewScoped
-public class BuilderRelatorio {
+public class BuilderAluguel {
 
     private Cliente cliente;
     private Date dataEntrega;
@@ -59,8 +59,8 @@ public class BuilderRelatorio {
     }
 
 
-    public Relatorio criarRelatorio() {
-        return new Relatorio(cod, cliente, dataEntrega, valorEmprestimo, valorMulta, dataEmprestimo);
+    public Aluguel criarRelatorio() {
+        return new Aluguel(cod, cliente, dataEntrega, valorEmprestimo, valorMulta, dataEmprestimo);
     }
 
     public int getCod() {

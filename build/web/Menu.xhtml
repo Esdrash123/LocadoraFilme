@@ -6,19 +6,34 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Locadora</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h1>BEM-VINDO AO NOSSO SISTEMA!</h1> <br/>
-        <h:link outcome="CadastroFilme.xhtml" value="Cadastro de Filmes"/><br/>
-        <h:link outcome="CadastroCliente.xhtml" value="Cadastro de Clientes"/><br/>
-        <h:link outcome="CadastroRelatorio.xhtml" value="Cadastro de Alugueis"/><br/>
-        <h:link outcome="ApresentaFilmes.xhtml" value="Filmes"/><br/>
-        <h:link outcome="ApresentaClientes.xhtml" value="Clientes"/><br/>
-        <h:link outcome="ApresentaAlugel.xhtml" value="Alugeis"/>
-       
+        <h:form>
+            <p:growl id="messages"/>
+
+            <p:menubar>
+                <p:submenu label="Cliente" icon="ui-icon-document">
+                    <p:menuitem value="Cadastro de clientes" url="CadastroCliente.xhtml" />
+                    <p:menuitem value="Lista de clientes" url="ApresentaClientes.xhtml" />
+                </p:submenu>
+
+                <p:submenu label="Filme" icon="ui-icon-document">
+                    <p:menuitem value="Cadastro de Filmes" url="CadastroFilme.xhtml" />
+                    <p:menuitem value="Lista de Filmes" url="ApresentaFilmes.xhtml" />
+                </p:submenu>
+
+                <p:submenu label="Aluguel" icon="ui-icon-document">
+                    <p:menuitem value="Cadastro de Alugueis" url="CadastroAluguel.xhtml" />
+                    <p:menuitem value="Lista de Alugueis" url="ApresentaAluguel.xhtml" />
+                </p:submenu>
+
+            </p:menubar>
+        </h:form>
     </h:body>
 </html>

@@ -32,7 +32,7 @@ public class FabricaRepositorio {
                 return new RepositorioFilme();
             }
             else if(tipoNegocio == Relatorio){
-                return new RepositorioRelatorio();
+                return new RepositorioAluguel();
             }
             
         }
