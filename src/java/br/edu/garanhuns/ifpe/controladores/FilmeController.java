@@ -35,7 +35,7 @@ public class FilmeController {
         this.repositorioFilme.inserir(filme);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("OK", "O filme '" + filme.getTitulo() + "' foi cadastrado com sucesso!"));
+                addMessage(null, new FacesMessage("OK!" + "O filme '" + filme.getTitulo() + "' foi cadastrado com sucesso!"));
 
         return "ApresentaFilmes.xhtml";
     }

@@ -38,9 +38,9 @@ public class ClienteController {
         this.repositorioCliente.inserir(cliente);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("Parabéns", "O cliente '" + cliente.getNome() + "' foi cadastrado com sucesso!"));
+                addMessage(null, new FacesMessage("OK!"+ "O cliente '" + cliente.getNome() + "' foi cadastrado com sucesso!"));
         
-        return "ApresentarCliente.xhtml";
+        return "ApresentaClientes.xhtml";
     }
 
     public String atualizar(Cliente cliente) {
