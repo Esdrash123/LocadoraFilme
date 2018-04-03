@@ -7,7 +7,6 @@ package br.edu.garanhuns.ifpe.builders;
 
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Aluguel;
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -20,10 +19,10 @@ import javax.faces.bean.ViewScoped;
 public class BuilderAluguel {
 
     private Cliente cliente;
-    private Date dataEntrega;
+    private String dataEntrega;
     private double valorEmprestimo;
     private double valorMulta;
-    private Date dataEmprestimo;
+    private String dataEmprestimo;
     private int cod;
 
     public Cliente getCliente() {
@@ -34,11 +33,11 @@ public class BuilderAluguel {
         this.cliente = cliente;
     }
 
-    public Date getDataEntrega() {
+    public String getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -50,16 +49,16 @@ public class BuilderAluguel {
         this.valorMulta = valorMulta;
     }
 
-    public Date getDataEmprestimo() {
+    public String getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(String dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
 
-    public Aluguel criarRelatorio() {
+    public Aluguel criarAluguel() {
         return new Aluguel(cod, cliente, dataEntrega, valorEmprestimo, valorMulta, dataEmprestimo);
     }
 

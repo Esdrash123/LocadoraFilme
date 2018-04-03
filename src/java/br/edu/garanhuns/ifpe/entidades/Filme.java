@@ -34,13 +34,13 @@ public class Filme {
     @Column(length = 100, nullable = false)
     private String dataLancamento;
 
-    @Column(length = 2)
-    private int faixaIndicativa;
+    @Column(length = 10)
+    private String faixaIndicativa;
 
     @Column(length = 5)
     private boolean disponivel;
 
-    public Filme(String titulo, String sinopse, String dataLancamento, int faixaIndicativa) {
+    public Filme(String titulo, String sinopse, String dataLancamento, String faixaIndicativa) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.dataLancamento = dataLancamento;
@@ -82,11 +82,11 @@ public class Filme {
         this.dataLancamento = dataLancamento;
     }
 
-    public int getFaixaIndicativa() {
+    public String getFaixaIndicativa() {
         return faixaIndicativa;
     }
 
-    public void setFaixaIndicativa(int faixaIndicativa) {
+    public void setFaixaIndicativa(String faixaIndicativa) {
         this.faixaIndicativa = faixaIndicativa;
     }
 

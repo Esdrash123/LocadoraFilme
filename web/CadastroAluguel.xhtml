@@ -34,7 +34,6 @@
                                  requiredMessage="O valor do emprestimo é obrigatoria"/>
                     <p:message for="txtValorEmprestimo"/>
 
-
                     <h:outputText value="DataEmprestimo"/>
                     <p:inputText id="txtDataEmprestimo" value="#{bAluguel.dataEmprestimo}" required="true"
                                  requiredMessage="a data de emprestimo é obrigatoria"/>
@@ -48,7 +47,7 @@
             <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
                 <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
 
-                <p:commandButton value="cadastrar" update="CadastroAluguelform" action="#{cAluguel.inserir(bAluguel.criarRelatorio())}"/>
+                <p:commandButton value="cadastrar" update="CadastroAluguelform" action="#{cAluguel.inserir(bAluguel.criarAluguel())}"/>
 
 
                 <p:commandButton value="não" onclick="PF('painel').hide()"/>

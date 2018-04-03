@@ -43,9 +43,11 @@ and open the template in the editor.
                     <p:message for="txtEndereco"/>
 
                     <h:outputText value="Pendencia"/>
-                    <p:inputText id="txtPendencia" value="#{bCliente.pendencia}" required="true"
-                                 requiredMessage="A pendencia é obrigatoria"/>
-                    <p:message for="txtPendencia"/>
+                    <p:selectOneRadio id="txtFaixaIndicativa" value="#{bCliente.pendencia}" >                     
+                        <f:selectItem itemLabel="Sim" itemValue="Sim" />
+                        <f:selectItem itemLabel="Não" itemValue="Não"/>
+                     
+                    </p:selectOneRadio><br/>
 
 
 

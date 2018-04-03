@@ -27,15 +27,22 @@ and open the template in the editor.
                                  requiredMessage="O Titulo é obrigatório"/>
                     <p:message for="txtTitulo"/>
 
-                    <h:outputText value="DataLancamento"/>
+                    <h:outputText value="Data de lancamento"/>
                     <p:inputText id="txtDataLancamento" value="#{bFilme.dataLancamento}" required="true"
                                  requiredMessage="A data de lancamento é obrigatória"/>
                     <p:message for="txtDataLancamento"/>
 
-                    <h:outputText value="FaixaIndicativa"/>
-                    <p:inputText id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" required="true"
-                                 requiredMessage="A faixa indicativa é obrigatoria"/>
-                    <p:message for="txtFaixaIndicativa"/>
+              <h:outputText value="Faixa indicativa"/>
+                    <p:selectOneRadio id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" >                     
+                        <f:selectItem itemLabel="L" itemValue="Livre" />
+                        <f:selectItem itemLabel="10" itemValue="10"/>
+                        <f:selectItem itemLabel="12" itemValue="12" />
+                        <f:selectItem itemLabel="14" itemValue="14" />
+                        <f:selectItem itemLabel="16" itemValue="16" />
+                        <f:selectItem itemLabel="18" itemValue="18" />
+
+
+                    </p:selectOneRadio><br/>
 
                     <h:outputText value="Sinopse"/>
                     <p:inputTextarea id="txtSinopse" value="#{bFilme.sinopse}" required="true"

@@ -22,7 +22,7 @@ public class BuilderFilme {
     private String titulo;
     private String sinopse;
     private String dataLancamento;
-    private int faixaIndicativa;
+    private String faixaIndicativa;
     private boolean disponivel;
 
     public String getTitulo() {
@@ -49,11 +49,11 @@ public class BuilderFilme {
         this.dataLancamento = dataLancamento;
     }
 
-    public int getFaixaIndicativa() {
+    public String getFaixaIndicativa() {
         return faixaIndicativa;
     }
 
-    public void setFaixaIndicativa(int faixaIndicativa) {
+    public void setFaixaIndicativa(String faixaIndicativa) {
         this.faixaIndicativa = faixaIndicativa;
     }
 

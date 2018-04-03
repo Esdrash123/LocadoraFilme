@@ -24,28 +24,26 @@ import javax.faces.context.FacesContext;
 
 public class AluguelController {
 
-      private RepositorioGenerico<Aluguel, String> repositorioRelatorio = null;
+    private RepositorioGenerico<Aluguel, String> repositorioAluguel = null;
     private Aluguel selectAluguel;
 
     public AluguelController() {
-        this.repositorioRelatorio = new RepositorioAluguel();
+        this.repositorioAluguel = new RepositorioAluguel();
     }
 
-    public String inserir(Aluguel relatorio) {
+    public String inserir(Aluguel aluguel) {
 
-
-        this.repositorioRelatorio.inserir(relatorio);
+        this.repositorioAluguel.inserir(aluguel);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("OK", "O Relatorio '" + relatorio.getCod()+ "' foi cadastrado com sucesso!"));
+                addMessage(null, new FacesMessage("OK!" + "O Aluguel " + aluguel.getCod() + " foi cadastrado com sucesso!"));
 
-        return "ApresentaAlugel.xhtml";
+        return "ApresentaAluguel.xhtml";
     }
 
     public String atualizar(Aluguel aluguel) {
-     
 
-        if (((RepositorioAluguel) this.repositorioRelatorio).recuperar(aluguel.getCod()) != null) {
+        if (((RepositorioAluguel) this.repositorioAluguel).recuperar(aluguel.getCod()) != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Filme como mesmo titulo já cadastrado!"));
             return null;
 
@@ -53,23 +51,23 @@ public class AluguelController {
 
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Parabéns", "o filme '" + aluguel.getCod() + "' , com faxetaria de '"
-                        + aluguel.getDataEntrega()+ "' foi alterado com sucesso!"));
+                        + aluguel.getDataEntrega() + "' foi alterado com sucesso!"));
 
-        this.repositorioRelatorio.alterar(aluguel);
+        this.repositorioAluguel.alterar(aluguel);
 
         return "ApresentaFilmes.xhtml";
     }
 
-    public void deletar(Aluguel filme) {
-        this.repositorioRelatorio.deletar(filme);
+    public void deletar(Aluguel aluguel) {
+        this.repositorioAluguel.deletar(aluguel);
     }
 
     public Aluguel recuperaFilme(String cod) {
-        return this.repositorioRelatorio.recuperar(cod);
+        return this.repositorioAluguel.recuperar(cod);
     }
 
     public List<Aluguel> getAluguel() {
-        return this.repositorioRelatorio.recuperarTodos();
+        return this.repositorioAluguel.recuperarTodos();
     }
 
     public Aluguel getSelectAluguel() {

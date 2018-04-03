@@ -5,7 +5,6 @@
  */
 package br.edu.garanhuns.ifpe.entidades;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,15 +29,15 @@ public class Aluguel {
     @Column(length = 100)
     private int cod;
     @Column(length = 100, nullable = false)
-    private Date dataEntrega;
+    private String dataEntrega;
     @Column(length = 30)
     private double valorEmprestimo;
     @Column(length = 30)
     private double valorMulta;
     @Column(length = 100)
-    private Date dataEmprestimo;
+    private String dataEmprestimo;
 
-    public Aluguel(int cod, Cliente cliente, Date dataEntrega, double valorEmprestimo, double valorMulta, Date dataEmprestimo) {
+    public Aluguel(int cod, Cliente cliente, String dataEntrega, double valorEmprestimo, double valorMulta, String dataEmprestimo) {
         this.cliente = cliente;
         this.dataEntrega = dataEntrega;
         this.valorEmprestimo = valorEmprestimo;
@@ -75,11 +74,11 @@ public class Aluguel {
         this.cliente = cliente;
     }
 
-    public Date getDataEntrega() {
+    public String getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -91,11 +90,11 @@ public class Aluguel {
         this.valorMulta = valorMulta;
     }
 
-    public Date getDataEmprestimo() {
+    public String getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(String dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
