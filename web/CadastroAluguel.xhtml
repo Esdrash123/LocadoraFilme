@@ -18,11 +18,11 @@
                                  requiredMessage="O cliente é obrigatório"/>
                     <p:message for="txtCliente"/>
 
+                    <h:outputText value="DataEmprestimo"/>
+                    <p:inputText id="txtDataEmprestimo" value="#{bAluguel.dataEmprestimo}" required="true"
+                                 requiredMessage="a data de emprestimo é obrigatoria"/>
+                    <p:message for="txtDataEmprestimo"/>
 
-                    <h:outputText value="Cod"/>
-                    <p:inputText id="txtCod" value="#{bAluguel.cod}" required="true"
-                                 requiredMessage="O cod é obrigatória"/>
-                    <p:message for="txtCod"/>
 
                     <h:outputText value="DataEntrega"/>
                     <p:inputText id="txtDataEntrega" value="#{bAluguel.dataEntrega}" required="true"
@@ -34,10 +34,6 @@
                                  requiredMessage="O valor do emprestimo é obrigatoria"/>
                     <p:message for="txtValorEmprestimo"/>
 
-                    <h:outputText value="DataEmprestimo"/>
-                    <p:inputText id="txtDataEmprestimo" value="#{bAluguel.dataEmprestimo}" required="true"
-                                 requiredMessage="a data de emprestimo é obrigatoria"/>
-                    <p:message for="txtDataEmprestimo"/>
 
 
                 </p:panelGrid>

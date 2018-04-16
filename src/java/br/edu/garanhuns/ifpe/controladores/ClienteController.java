@@ -25,28 +25,42 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "cCliente")
 @SessionScoped
 public class ClienteController {
-    
-    private RepositorioGenerico<Cliente,Integer> repositorioCliente = null;
+
+    private RepositorioGenerico<Cliente, String> repositorioCliente = null;
     private Cliente selectCliente;
-    
+
     public ClienteController() {
         this.repositorioCliente = new RepositorioCliente();
     }
-    
+
     public String inserir(Cliente cliente) {
+
+        if (cliente.getCpf().length() != 11) {
+            FacesContext.getCurrentInstance().
+                    addMessage(null, new FacesMessage("CPF deve conter 11 digitos."));
+
+            return "CadastroCliente.xhtml";
+        }
+
+        if (cliente.getNome() == (this.repositorioCliente.recuperar(cliente.getNome()).getNome())) {
+            FacesContext.getCurrentInstance().
+                    addMessage(null, new FacesMessage("Já existe um usuário com esse nome."));
+
+            return "CadastroCliente.xhtml";
+        }
 
         this.repositorioCliente.inserir(cliente);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("OK!"+ "O cliente '" + cliente.getNome() + "' foi cadastrado com sucesso!"));
-        
+                addMessage(null, new FacesMessage("OK!" + "O cliente '" + cliente.getNome() + "' foi cadastrado com sucesso!"));
+
         return "ApresentaClientes.xhtml";
     }
 
     public String atualizar(Cliente cliente) {
-        
+
         String cpf = cliente.getCpf();
-        
+
         if (cpf.length() != 11) {
             FacesContext.getCurrentInstance().addMessage("form:inputCpf", new FacesMessage("Erro", "O cpf tem que ter 11 DIGITOS"));
             return null;
@@ -57,7 +71,7 @@ public class ClienteController {
             return null;
 
         }
-        
+
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Parabéns", "o cliete '" + cliente.getNome() + "' foi alterado com sucesso!"));
 
@@ -69,11 +83,11 @@ public class ClienteController {
     public void deletar(Cliente cliente) {
         this.repositorioCliente.deletar(cliente);
     }
-    
-    public Cliente recuperaCliente(int cpf) {
+
+    public Cliente recuperaCliente(String cpf) {
         return this.repositorioCliente.recuperar(cpf);
     }
-    
+
     public List<Cliente> getCliente() {
         return this.repositorioCliente.recuperarTodos();
     }

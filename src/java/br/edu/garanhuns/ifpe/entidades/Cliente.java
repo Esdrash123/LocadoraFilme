@@ -37,12 +37,11 @@ public class Cliente {
     @OneToMany
     private List<Dependente> dependentes;
 
-    public Cliente(String nome, String cpf, String endereco, String pendencia, String telefone) {
+    public Cliente(String nome, String cpf, String telefone ,  String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
-        this.pendencia = pendencia;
     }
 
     @Deprecated
@@ -91,6 +90,14 @@ public class Cliente {
 
     public String getPendencia() {
         return pendencia;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setPendencia(String pendencia) {

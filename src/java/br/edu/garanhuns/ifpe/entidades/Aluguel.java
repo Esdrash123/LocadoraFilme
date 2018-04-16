@@ -5,11 +5,13 @@
  */
 package br.edu.garanhuns.ifpe.entidades;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,8 +26,10 @@ public class Aluguel {
     @GeneratedValue
     private int id;
 
-    @ManyToOne
-    private Cliente cliente;
+    @OneToMany
+    private List<Cliente> ListaClientes;
+    @OneToMany
+    private List<Filme> ListaFilmes;
     @Column(length = 100)
     private int cod;
     @Column(length = 100, nullable = false)
@@ -37,14 +41,15 @@ public class Aluguel {
     @Column(length = 100)
     private String dataEmprestimo;
 
-    public Aluguel(int cod, Cliente cliente, String dataEntrega, double valorEmprestimo, double valorMulta, String dataEmprestimo) {
-        this.cliente = cliente;
+    public Aluguel(int cod, List<Cliente> ListaClientes, List<Filme> ListaFilmes, String dataEntrega, double valorEmprestimo, String dataEmprestimo) {
+        this.ListaClientes = ListaClientes;
+        this.ListaFilmes = ListaFilmes;
         this.dataEntrega = dataEntrega;
         this.valorEmprestimo = valorEmprestimo;
-        this.valorMulta = valorMulta;
         this.dataEmprestimo = dataEmprestimo;
         this.cod = cod;
     }
+    
 
     @Deprecated
     public Aluguel() {
@@ -66,12 +71,20 @@ public class Aluguel {
         this.valorEmprestimo = valorEmprestimo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public List<Cliente> getListaClientes() {
+        return ListaClientes;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setListaClientes(List<Cliente> ListaClientes) {
+        this.ListaClientes = ListaClientes;
+    }
+
+    public List<Filme> getListaFilmes() {
+        return ListaFilmes;
+    }
+
+    public void setListaFilmes(List<Filme> ListaFilmes) {
+        this.ListaFilmes = ListaFilmes;
     }
 
     public String getDataEntrega() {

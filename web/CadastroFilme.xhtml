@@ -22,17 +22,17 @@ and open the template in the editor.
             <p:fieldset legend="Cadastro de Filme" style="width: 50%">
                 <p:panelGrid columns="3">
 
-                    <h:outputText value="Titulo"/>
+                    <h:outputText value="Título:"/>
                     <p:inputText id="txtTitulo" value="#{bFilme.titulo}" required="true"
-                                 requiredMessage="O Titulo é obrigatório"/>
+                                 requiredMessage="O Título é obrigatório"/>
                     <p:message for="txtTitulo"/>
 
-                    <h:outputText value="Data de lancamento"/>
+                    <h:outputText value="Data de lançamento:"/>
                     <p:inputText id="txtDataLancamento" value="#{bFilme.dataLancamento}" required="true"
-                                 requiredMessage="A data de lancamento é obrigatória"/>
+                                 requiredMessage="A data de lançamento é obrigatória"/>
                     <p:message for="txtDataLancamento"/>
 
-              <h:outputText value="Faixa indicativa"/>
+              <h:outputText value="Faixa indicativa:"/>
                     <p:selectOneRadio id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" >                     
                         <f:selectItem itemLabel="L" itemValue="Livre" />
                         <f:selectItem itemLabel="10" itemValue="10"/>
@@ -44,7 +44,7 @@ and open the template in the editor.
 
                     </p:selectOneRadio><br/>
 
-                    <h:outputText value="Sinopse"/>
+                    <h:outputText value="Sinopse:"/>
                     <p:inputTextarea id="txtSinopse" value="#{bFilme.sinopse}" required="true"
                                      requiredMessage="A sinopse é obrigatória"/>
                     <p:message for="txtSinopse"/>

@@ -7,6 +7,8 @@ package br.edu.garanhuns.ifpe.builders;
 
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Aluguel;
+import br.edu.garanhuns.ifpe.entidades.Filme;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -18,20 +20,14 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class BuilderAluguel {
 
-    private Cliente cliente;
+    private List<Cliente> ListaClientes;
+
+    private List<Filme> ListaFilmes;
     private String dataEntrega;
     private double valorEmprestimo;
     private double valorMulta;
     private String dataEmprestimo;
     private int cod;
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     public String getDataEntrega() {
         return dataEntrega;
@@ -57,9 +53,24 @@ public class BuilderAluguel {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-
     public Aluguel criarAluguel() {
-        return new Aluguel(cod, cliente, dataEntrega, valorEmprestimo, valorMulta, dataEmprestimo);
+        return new Aluguel(cod, ListaClientes, ListaFilmes, dataEntrega, valorEmprestimo, dataEmprestimo);
+    }
+
+    public List<Cliente> getListaClientes() {
+        return ListaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> ListaClientes) {
+        this.ListaClientes = ListaClientes;
+    }
+
+    public List<Filme> getListaFilmes() {
+        return ListaFilmes;
+    }
+
+    public void setListaFilmes(List<Filme> ListaFilmes) {
+        this.ListaFilmes = ListaFilmes;
     }
 
     public int getCod() {

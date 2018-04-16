@@ -21,36 +21,27 @@ and open the template in the editor.
             <p:fieldset legend="Cadastro de Cliente" style="width: 50%">
                 <p:panelGrid columns="3">
 
-                    <h:outputText value="Nome"/>
+                    <h:outputText value="Nome:"/>
                     <p:inputText id="txtNome" value="#{bCliente.nome}" required="true"
                                  requiredMessage="O nome é obrigatório"/>
                     <p:message for="txtNome"/>
 
 
-                    <h:outputText value="Cpf"/>
+                    <h:outputText value="CPF:"/>
                     <p:inputText id="txtCpf" value="#{bCliente.cpf}" required="true"
-                                 requiredMessage="O cpf é obrigatória"/>
+                                 requiredMessage="O cpf é obrigatório"/>
                     <p:message for="txtCpf"/>
 
-                    <h:outputText value="Telefone"/>
+                    <h:outputText value="Telefone:"/>
                     <p:inputText id="txtTelefone" value="#{bCliente.telefone}" required="true"
                                  requiredMessage="O telefone é obrigatório"/>
                     <p:message for="txtTelefone"/>
 
-                    <h:outputText value="Endereco"/>
+                    <h:outputText value="Endereço:"/>
                     <p:inputText id="txtEndereco" value="#{bCliente.endereco}" required="true"
-                                 requiredMessage="O Endereco é obrigatoria"/>
+                                 requiredMessage="O Endereço é obrigatório"/>
                     <p:message for="txtEndereco"/>
-
-                    <h:outputText value="Pendencia"/>
-                    <p:selectOneRadio id="txtFaixaIndicativa" value="#{bCliente.pendencia}" >                     
-                        <f:selectItem itemLabel="Sim" itemValue="Sim" />
-                        <f:selectItem itemLabel="Não" itemValue="Não"/>
                      
-                    </p:selectOneRadio><br/>
-
-
-
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>

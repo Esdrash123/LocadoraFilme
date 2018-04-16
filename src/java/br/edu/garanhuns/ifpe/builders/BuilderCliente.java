@@ -78,7 +78,7 @@ public class BuilderCliente implements Serializable {
 
  
      public Cliente criarCliente (){
-        return new Cliente(nome, cpf,telefone, endereco,pendencia);
+        return new Cliente(nome, cpf,telefone, endereco);
     }
 
 }
