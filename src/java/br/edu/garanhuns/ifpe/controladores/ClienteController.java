@@ -6,12 +6,8 @@
 package br.edu.garanhuns.ifpe.controladores;
 
 import br.edu.garanhuns.ifpe.entidades.Cliente;
-import br.edu.garanhuns.ifpe.model.dao.ManagerDao;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioCliente;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -37,18 +33,68 @@ public class ClienteController {
 
         if (cliente.getCpf().length() != 11) {
             FacesContext.getCurrentInstance().
-                    addMessage(null, new FacesMessage("CPF deve conter 11 digitos."));
+                    addMessage("mensagensErro", new FacesMessage("CPF deve conter 11 digitos, você digitou " + cliente.getCpf().length() + " digitos."));
 
             return "CadastroCliente.xhtml";
         }
-
-        if (cliente.getNome() == (this.repositorioCliente.recuperar(cliente.getNome()).getNome())) {
+        if(cliente.getCpf().equals("00000000000")){
             FacesContext.getCurrentInstance().
-                    addMessage(null, new FacesMessage("Já existe um usuário com esse nome."));
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
 
             return "CadastroCliente.xhtml";
         }
+              if(cliente.getCpf().equals("11111111111")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
 
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("22222222222")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("33333333333")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("44444444444")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("55555555555")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("66666666666")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("77777777777")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("88888888888")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        } if(cliente.getCpf().equals("99999999999")){
+            FacesContext.getCurrentInstance().
+                    addMessage("mensagensErro", new FacesMessage("O CPF " + cliente.getCpf() + " é inválido."));
+
+            return "CadastroCliente.xhtml";
+        }                
+          if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
+            FacesContext.getCurrentInstance().addMessage("mensagensErro", new FacesMessage("Cliente como mesmo Cpf já cadastrado!"));
+            return "CadastroCliente.xhtml";
+
+        }
+        
         this.repositorioCliente.inserir(cliente);
 
         FacesContext.getCurrentInstance().
@@ -65,6 +111,7 @@ public class ClienteController {
             FacesContext.getCurrentInstance().addMessage("form:inputCpf", new FacesMessage("Erro", "O cpf tem que ter 11 DIGITOS"));
             return null;
         }
+        
 
         if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente como mesmo Cpf já cadastrado!"));

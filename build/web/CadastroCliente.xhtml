@@ -41,8 +41,9 @@ and open the template in the editor.
                     <p:inputText id="txtEndereco" value="#{bCliente.endereco}" required="true"
                                  requiredMessage="O Endereço é obrigatório"/>
                     <p:message for="txtEndereco"/>
-                     
+
                 </p:panelGrid>
+                <h:messages id="mensagensErro" styleClass="erros"/>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>
 
