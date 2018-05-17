@@ -29,7 +29,10 @@ and open the template in the editor.
 
                     <h:outputText value="CPF:"/>
                     <p:inputText id="txtCpf" value="#{bCliente.cpf}" required="true"
-                                 requiredMessage="O cpf é obrigatório"/>
+                               validatorMessage="CPF inválido"  requiredMessage="O cpf é obrigatório">
+                    <f:validateRegex
+                        pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})" />
+                    </p:inputText>   
                     <p:message for="txtCpf"/>
 
                     <h:outputText value="Telefone:"/>

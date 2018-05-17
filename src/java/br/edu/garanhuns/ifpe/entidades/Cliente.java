@@ -26,7 +26,7 @@ public class Cliente {
     private long id;
     @Column(length = 30)
     private String nome;
-    @Column(length = 11)
+    @Column(length = 11, nullable = false, unique = true)
     private String cpf;
     @Column(length = 20)
     private String telefone;
