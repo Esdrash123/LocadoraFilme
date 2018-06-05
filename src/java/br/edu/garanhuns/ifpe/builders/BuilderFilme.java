@@ -57,7 +57,7 @@ public class BuilderFilme {
         this.faixaIndicativa = faixaIndicativa;
     }
 
-    public boolean isDisponivel() {
+    public boolean getDisponivel() {
         return disponivel;
     }
 
@@ -66,6 +66,6 @@ public class BuilderFilme {
     }
 
  public Filme criarFilme (){
-        return new Filme(titulo, sinopse,dataLancamento,faixaIndicativa);
+        return new Filme(titulo, sinopse,dataLancamento,faixaIndicativa,disponivel);
     }
 }

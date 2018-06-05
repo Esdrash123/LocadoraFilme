@@ -1,7 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro de aluguel</title><br/>
     </h:head>
@@ -12,44 +13,17 @@
         <h:form id="CadastroAluguelform">
             <p:fieldset legend="Cadastro de Aluguel" style="width: 50%">
                 <p:panelGrid columns="3">
-
-                    <h:outputText value="Cliente"/>
-                    <p:inputText id="txtCliente" value="#{bAluguel.cliente}" required="true"
-                                 requiredMessage="O cliente é obrigatório"/>
-                    <p:message for="txtCliente"/>
-
-                    <h:outputText value="DataEmprestimo"/>
-                    <p:inputText id="txtDataEmprestimo" value="#{bAluguel.dataEmprestimo}" required="true"
-                                 requiredMessage="a data de emprestimo é obrigatoria"/>
-                    <p:message for="txtDataEmprestimo"/>
-
-
-                    <h:outputText value="DataEntrega"/>
-                    <p:inputText id="txtDataEntrega" value="#{bAluguel.dataEntrega}" required="true"
-                                 requiredMessage="A data da entrega é obrigatória"/>
-                    <p:message for="txtDataEntrega"/>
-
-                    <h:outputText value="ValorEmprestimo"/>
-                    <p:inputText id="txtValorEmprestimo" value="#{bAluguel.valorEmprestimo}" required="true"
-                                 requiredMessage="O valor do emprestimo é obrigatoria"/>
-                    <p:message for="txtValorEmprestimo"/>
-
-
-
+                    <p:selectOneButton id="ClienteList" value="#{cCliente.cliente}"  label="Clientes">
+                        <f:selectItems value="#{cCliente.cliente}" />
+                    </p:selectOneButton>
+                    
+                    <p:selectCheckboxMenu id="FilmeList" value="#{cFilme.filme}"  label="Filmes"
+                                          filter="true" filterMatchMode="startsWith" panelStyle="width:350px">
+                        <f:selectItems value="#{cFilme.filme}" />
+                    </p:selectCheckboxMenu>
+                   
                 </p:panelGrid>
-                <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>
-
-            <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
-                <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
-
-                <p:commandButton value="cadastrar" update="CadastroAluguelform" action="#{cAluguel.inserir(bAluguel.criarAluguel())}"/>
-
-
-                <p:commandButton value="não" onclick="PF('painel').hide()"/>
-
-            </p:dialog>
-
         </h:form>
 
     </h:body>

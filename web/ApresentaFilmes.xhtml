@@ -31,6 +31,9 @@
                 <p:column sortBy="#{item.faixaIndicativa}" filterBy="#{item.faixaIndicativa}" headerText="Faixa Indicativa" footerText="Faixa Indicativa" >
                     <h:outputText value="#{item.faixaIndicativa}"/>
                 </p:column>
+                <p:column sortBy="#{item.disponivel}" filterBy="#{item.disponivel}" headerText="Disponível" footerText="Disponível" >
+                    <h:outputText value="#{item.disponivel}"/>
+                </p:column>
 
             </p:dataTable>
 

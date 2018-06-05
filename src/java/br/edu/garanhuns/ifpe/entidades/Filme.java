@@ -40,11 +40,12 @@ public class Filme {
     @Column(length = 5)
     private boolean disponivel;
 
-    public Filme(String titulo, String sinopse, String dataLancamento, String faixaIndicativa) {
+    public Filme(String titulo, String sinopse, String dataLancamento, String faixaIndicativa,boolean disponivel) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.dataLancamento = dataLancamento;
         this.faixaIndicativa = faixaIndicativa;
+        this.disponivel = disponivel;
     }
   @Deprecated
     public Filme() {
@@ -90,7 +91,7 @@ public class Filme {
         this.faixaIndicativa = faixaIndicativa;
     }
 
-    public boolean isDisponivel() {
+    public boolean getDisponivel() {
         return disponivel;
     }
 

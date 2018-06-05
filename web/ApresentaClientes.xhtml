@@ -13,8 +13,8 @@
     <h:body>
         <ui:include src="Menu.xhtml" />
         <p:messages />
-        <h:form id="formApresentarFilme">
-            <p:dataTable id="tabelaFilme" value="#{cCliente.cliente}" var="item"
+        <h:form id="formApresentarCliente">
+            <p:dataTable id="tabelaCliente" value="#{cCliente.cliente}" var="item"
                          rowKey="#{item.nome}" paginator="true" rows="4" selectionMode="single"
                          selection="#{cCliente.selectCliente}">
 
@@ -28,7 +28,7 @@
                 <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}" headerText="Telefone" footerText="Telefone" >
                     <h:outputText value="#{item.telefone}"/>
                 </p:column>
-                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}" headerText="Endereço" footerText="Endereço" >
+                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}" headerText="Endereï¿½o" footerText="Endereï¿½o" >
                     <h:outputText value="#{item.endereco}"/>
                 </p:column>
 

@@ -32,7 +32,7 @@ and open the template in the editor.
                                  requiredMessage="A data de lançamento é obrigatória"/>
                     <p:message for="txtDataLancamento"/>
 
-              <h:outputText value="Faixa indicativa:"/>
+                    <h:outputText value="Faixa indicativa:"/>
                     <p:selectOneRadio id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" >                     
                         <f:selectItem itemLabel="L" itemValue="Livre" />
                         <f:selectItem itemLabel="10" itemValue="10"/>
@@ -49,7 +49,13 @@ and open the template in the editor.
                                      requiredMessage="A sinopse é obrigatória"/>
                     <p:message for="txtSinopse"/>
 
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <h:outputText value="Disponível" />
+                        <p:selectBooleanButton id="value1" value="#{bFilme.disponivel}" onLabel="Yes" offLabel="No" style="width:60px" />
 
+                    </h:panelGrid>
+
+                   
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>
