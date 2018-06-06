@@ -11,17 +11,39 @@
         <ui:include src='Menu.xhtml'/>
         <p:messages/>
         <h:form id="CadastroAluguelform">
-            <p:fieldset legend="Cadastro de Aluguel" style="width: 50%">
-                <p:panelGrid columns="3">
-                    <p:selectOneButton id="ClienteList" value="#{cCliente.cliente}"  label="Clientes">
-                        <f:selectItems value="#{cCliente.cliente}" />
-                    </p:selectOneButton>
+            <p:fieldset legend="Cadastro de Aluguel" style="width: 60%">
+                <p:dataTable id="listaClientes" var="item" value="#{cCliente.cliente}" selection="#{bAluguel.listaClientes}" rowKey="#{item.id}">
+                    <f:facet name="header">
+                        Clientes
+                    </f:facet>
+                    <p:column selectionMode="single" style="width:16px;text-align:center"/>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{item.nome}" />
+                    </p:column>
+
+                </p:dataTable> 
+
+                <p:dataTable id="checkboxDT" var="item" value="#{cFilme.filme}" selection="#{bAluguel.listaFilmes}" rowKey="#{item.id}" style="margin-bottom:0">
+                    <f:facet name="header">
+                        Filmes
+                    </f:facet>
+                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+                    <p:column headerText="Titulo">
+                        <h:outputText value="#{item.titulo}" />
+                    </p:column>
+                    <p:column headerText="Sinopse">
+                        <h:outputText value="#{item.sinopse}" />
+                    </p:column>
+                    <p:column headerText="Faixa indicativa">
+                        <h:outputText value="#{item.faixaIndicativa}" />
+                    </p:column>
+                    <p:column headerText="Disponivel">
+                        <h:outputText value="#{item.disponivel}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:panelGrid columns="3" >
                     
-                    <p:selectCheckboxMenu id="FilmeList" value="#{cFilme.filme}"  label="Filmes"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:350px">
-                        <f:selectItems value="#{cFilme.filme}" />
-                    </p:selectCheckboxMenu>
-                   
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
