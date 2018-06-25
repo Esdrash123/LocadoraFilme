@@ -24,37 +24,30 @@ and open the template in the editor.
                          selection="#{cAluguel.selectAluguel}">
 
                 <p:column sortBy="#{item.cliente}" filterBy="#{item.cliente}" headerText="cliente" footerText="cliente">
-                    <h:outputText value="#{item.cliente}"/>
+                    <h:outputText value="#{item.cliente.nome}"/>
+                </p:column>
+
+                <p:column  headerText="Filmes" footerText="Filmes">
+                    <h:outputText value="#{item.filmes}"/>
                 </p:column>
 
                 <p:column sortBy="#{item.cod}" filterBy="#{item.cod}" headerText="cod" footerText="cod" >
                     <h:outputText value="#{item.cod}"/>
                 </p:column>
-                <p:column sortBy="#{item.valorEmprestimo}" filterBy="#{item.valorEmprestimo}" headerText="V.Emprestimo" footerText="V.Emprestimo" >
-                    <h:outputText value="#{item.valorEmprestimo}"/>
-                </p:column>
+
                 <p:column sortBy="#{item.dataEntrega}" filterBy="#{item.dataEntrega}" headerText="D.Entrega" footerText="D.Entrega" >
                     <h:outputText value="#{item.dataEntrega}"/>
                 </p:column>
+
                 <p:column sortBy="#{item.dataEmprestimo}" filterBy="#{item.dataEmprestimo}" headerText="D.Emprestimo" footerText="D.Emprestimo" >
                     <h:outputText value="#{item.dataEmprestimo}"/>
                 </p:column>
-                <p:column sortBy="#{item.valorMulta}" filterBy="#{item.valorMulta}" headerText="V.Multa" footerText="V.Multa" >
-                    <h:outputText value="#{item.valorMulta}"/>
+
+                <p:column sortBy="#{item.valorEmprestimo}" filterBy="#{item.valorEmprestimo}" headerText="V.Emprestimo" footerText="V.Emprestimo" >
+                    <h:outputText value="#{item.valorEmprestimo}"/>
                 </p:column>
 
             </p:dataTable>
-
-            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                <p:commandButton value="N�o" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-            </p:confirmDialog>
-            <p:dialog id="dial1" closable="false" resizable="false" modal="true"
-                      visible="false" widgetVar="painel1" header="Dados">
-
-                <p:commandLink value="fechar" 
-                               oncomplete="PF('painel1').hide()"/>
-            </p:dialog>
 
         </h:form>
 

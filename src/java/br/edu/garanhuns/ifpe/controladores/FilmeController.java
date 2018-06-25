@@ -8,6 +8,7 @@ package br.edu.garanhuns.ifpe.controladores;
 import br.edu.garanhuns.ifpe.entidades.Filme;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioFilme;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,7 +22,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "cFilme")
 @SessionScoped
 
-public class FilmeController {
+public class FilmeController implements Serializable {
 
     private RepositorioGenerico<Filme, String> repositorioFilme = null;
     private Filme selectFilme;
@@ -31,7 +32,7 @@ public class FilmeController {
     }
 
     public String inserir(Filme filme) {
-
+        filme.setDisponivel(true);
         this.repositorioFilme.inserir(filme);
 
         FacesContext.getCurrentInstance().

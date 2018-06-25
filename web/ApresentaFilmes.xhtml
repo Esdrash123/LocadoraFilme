@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>Apresentar Filmes</title>
@@ -15,24 +16,44 @@
         <p:messages />
         <h:form id="formApresentarFilme">
             <p:dataTable id="tabelaFilme" value="#{cFilme.filme}" var="item"
-                         rowKey="#{item.titulo}" paginator="true" rows="6" selectionMode="single"
+                         rowKey="#{item.titulo}" paginator="true" rows="10" selectionMode="single"
                          selection="#{cFilme.selectFilme}">
 
                 <p:column sortBy="#{item.titulo}" filterBy="#{item.titulo}" headerText="Titulo" footerText="Titulo">
                     <h:outputText value="#{item.titulo}"/>
                 </p:column>
 
-                <p:column sortBy="#{item.sinopse}" filterBy="#{item.sinopse}" headerText="Sinopse" footerText="Sinopse" >
+                <p:column  headerText="Sinopse" footerText="Sinopse" >
                     <h:outputText value="#{item.sinopse}"/>
                 </p:column>
-                <p:column sortBy="#{item.dataLancamento}" filterBy="#{item.dataLancamento}" headerText="Data de Lancamento" footerText="Data de Lancamento" >
+                
+                <p:column  headerText="Data de Lancamento" footerText="Data de Lancamento" >
                     <h:outputText value="#{item.dataLancamento}"/>
                 </p:column>
-                <p:column sortBy="#{item.faixaIndicativa}" filterBy="#{item.faixaIndicativa}" headerText="Faixa Indicativa" footerText="Faixa Indicativa" >
+                
+                <p:column  headerText="Faixa Indicativa" footerText="Faixa Indicativa" >
                     <h:outputText value="#{item.faixaIndicativa}"/>
                 </p:column>
-                <p:column sortBy="#{item.disponivel}" filterBy="#{item.disponivel}" headerText="Disponível" footerText="Disponível" >
-                    <h:outputText value="#{item.disponivel}"/>
+                
+                <p:column  headerText="Categoria" footerText="Categoria" >
+                    <h:outputText value="#{item.categoria}"/>
+                </p:column>
+                
+                <p:column  headerText="Valor" footerText="Valor" >
+                    <h:outputText value="#{item.valorFilme}"/>
+                </p:column>
+                <p:column  headerText="Disponivel" footerText="Disponivel" >
+
+                    <c:choose>
+                        <c:when  test ="${!item.disponivel}">
+                            <h:outputText value="Sim"/>
+                        </c:when>
+                        <c:otherwise>
+                            <h:outputText value="Nao"/>
+                        </c:otherwise>
+                    </c:choose>
+
+
                 </p:column>
 
             </p:dataTable>

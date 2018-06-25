@@ -19,7 +19,7 @@ and open the template in the editor.
         <ui:include src='Menu.xhtml'/>
         <p:messages/>
         <h:form id="CadastroFilmeform">
-            <p:fieldset legend="Cadastro de Filme" style="width: 50%">
+            <p:fieldset legend="Cadastro de Filme" style="width: 60%">
                 <p:panelGrid columns="3">
 
                     <h:outputText value="Título:"/>
@@ -28,34 +28,53 @@ and open the template in the editor.
                     <p:message for="txtTitulo"/>
 
                     <h:outputText value="Data de lançamento:"/>
-                    <p:inputText id="txtDataLancamento" value="#{bFilme.dataLancamento}" required="true"
-                                 requiredMessage="A data de lançamento é obrigatória"/>
-                    <p:message for="txtDataLancamento"/>
+                    <p:calendar id="german" value="#{bFilme.dataLancamento}" locale="de" navigator="true" pattern="yyyy-MMM-dd" required="true"
+                                requiredMessage="A data de lancamento é obrigatória" />
+                    <p:message for="german"/> 
 
                     <h:outputText value="Faixa indicativa:"/>
-                    <p:selectOneRadio id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" >                     
+                    <p:selectOneRadio id="txtFaixaIndicativa" value="#{bFilme.faixaIndicativa}" required="true"
+                                      requiredMessage="A faixa indicativa é obrigatória">
+
                         <f:selectItem itemLabel="L" itemValue="Livre" />
                         <f:selectItem itemLabel="10" itemValue="10"/>
                         <f:selectItem itemLabel="12" itemValue="12" />
                         <f:selectItem itemLabel="14" itemValue="14" />
                         <f:selectItem itemLabel="16" itemValue="16" />
                         <f:selectItem itemLabel="18" itemValue="18" />
+                    </p:selectOneRadio>
+                    <p:message for="txtFaixaIndicativa"/>  
 
+                    <h:outputText value="Categoria:"/>
+                    <p:selectOneMenu id="txtCategoria" value="#{bFilme.categoria}" required="true"
+                                     requiredMessage="A Categoria é obrigatória">
 
-                    </p:selectOneRadio><br/>
+                        <f:selectItem itemLabel="Selecione uma categoria " itemValue="" />
+                        <f:selectItem itemLabel="Romance" itemValue="Romance" />
+                        <f:selectItem itemLabel="Drama" itemValue="Drama" />
+                        <f:selectItem itemLabel="Suspense" itemValue="Suspense" />
+                        <f:selectItem itemLabel="Acao" itemValue="Acao" />
+                        <f:selectItem itemLabel="Aventura" itemValue="Aventura" />
+                        <f:selectItem itemLabel="Terror" itemValue="Terror" />
+                        <f:selectItem itemLabel="Comedia" itemValue="Comedia" />
+                    </p:selectOneMenu>
+                    <p:message for="txtCategoria"/>
+
+                    <h:outputText value="Valor do Filme"/>
+                    <p:selectOneRadio id="txtValor" value="#{bFilme.valorFilme}" required="true"
+                                      requiredMessage="O valor é obrigatório">
+
+                        <f:selectItem itemLabel="Lancamento(10R$)" itemValue="10" />
+                        <f:selectItem itemLabel="Classico(8R$)" itemValue="8"/>
+                        <f:selectItem itemLabel="Comum(5R$)" itemValue="5" />
+                    </p:selectOneRadio>
+                    <p:message for="txtValor"/> 
 
                     <h:outputText value="Sinopse:"/>
                     <p:inputTextarea id="txtSinopse" value="#{bFilme.sinopse}" required="true"
                                      requiredMessage="A sinopse é obrigatória"/>
                     <p:message for="txtSinopse"/>
 
-                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                        <h:outputText value="Disponível" />
-                        <p:selectBooleanButton id="value1" value="#{bFilme.disponivel}" onLabel="Yes" offLabel="No" style="width:60px" />
-
-                    </h:panelGrid>
-
-                   
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>

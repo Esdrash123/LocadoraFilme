@@ -8,6 +8,7 @@ package br.edu.garanhuns.ifpe.controladores;
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioCliente;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name = "cCliente")
 @SessionScoped
-public class ClienteController {
+public class ClienteController implements Serializable {
 
     private RepositorioGenerico<Cliente, String> repositorioCliente = null;
     private Cliente selectCliente;
@@ -31,12 +32,21 @@ public class ClienteController {
 
     public String inserir(Cliente cliente) {
 
-          if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
+        if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
             FacesContext.getCurrentInstance().addMessage("mensagensErro", new FacesMessage("Cliente com mesmo Cpf já cadastrado!"));
             return "CadastroCliente.xhtml";
 
         }
-        
+
+        if (cliente.getCpf().equals("000.000.000-00") || cliente.getCpf().equals("111.111.111-11")
+                || cliente.getCpf().equals("222.222.222-22") || cliente.getCpf().equals("333.333.333-33")
+                || cliente.getCpf().equals("444.444.444-44") || cliente.getCpf().equals("555.555.555-55")
+                || cliente.getCpf().equals("666.666.666-66") || cliente.getCpf().equals("777.777.777-77")
+                || cliente.getCpf().equals("888.888.888-88") || cliente.getCpf().equals("999.999.999-99")) {
+            FacesContext.getCurrentInstance().addMessage("mensagensErro", new FacesMessage("O CPF "+cliente.getCpf() +" é invalido !"));
+            return "CadastroCliente.xhtml";
+
+        }
         this.repositorioCliente.inserir(cliente);
 
         FacesContext.getCurrentInstance().
@@ -53,7 +63,6 @@ public class ClienteController {
             FacesContext.getCurrentInstance().addMessage("form:inputCpf", new FacesMessage("Erro", "O cpf tem que ter 11 DIGITOS"));
             return null;
         }
-        
 
         if (((RepositorioCliente) this.repositorioCliente).recuperarCpf(cliente.getCpf()) != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente como mesmo Cpf já cadastrado!"));

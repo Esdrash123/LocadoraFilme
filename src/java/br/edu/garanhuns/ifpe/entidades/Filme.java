@@ -5,13 +5,13 @@
  */
 package br.edu.garanhuns.ifpe.entidades;
 
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -32,22 +32,32 @@ public class Filme {
     private String sinopse;
 
     @Column(length = 100, nullable = false)
-    private String dataLancamento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataLancamento;
 
     @Column(length = 10)
     private String faixaIndicativa;
 
+    @Column(length = 100)
+    private String categoria;
+
+    @Column(length = 30)
+    private double valorFilme;
+
     @Column(length = 5)
     private boolean disponivel;
 
-    public Filme(String titulo, String sinopse, String dataLancamento, String faixaIndicativa,boolean disponivel) {
+    public Filme(String titulo, Date dataLancamento, String faixaIndicativa,String categoria, Double valorFilme, String sinopse, boolean disponivel) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.dataLancamento = dataLancamento;
         this.faixaIndicativa = faixaIndicativa;
+        this.categoria = categoria;
+        this.valorFilme = valorFilme;
         this.disponivel = disponivel;
     }
-  @Deprecated
+
+    @Deprecated
     public Filme() {
     }
 
@@ -75,11 +85,11 @@ public class Filme {
         this.sinopse = sinopse;
     }
 
-    public String getDataLancamento() {
+    public Date getDataLancamento() {
         return dataLancamento;
     }
 
-    public void setDataLancamento(String dataLancamento) {
+    public void setDataLancamento(Date dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
 
@@ -97,6 +107,22 @@ public class Filme {
 
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public double getValorFilme() {
+        return valorFilme;
+    }
+
+    public void setValorFilme(double valorFilme) {
+        this.valorFilme = valorFilme;
     }
 
 }

@@ -18,7 +18,7 @@ and open the template in the editor.
         <ui:include src='Menu.xhtml'/>
         <p:messages/>
         <h:form id="CadastroClienteform">
-            <p:fieldset legend="Cadastro de Cliente" style="width: 50%">
+            <p:fieldset legend="Cadastro de Cliente" style="width: 60%">
                 <p:panelGrid columns="3">
 
                     <h:outputText value="Nome:"/>
@@ -28,15 +28,12 @@ and open the template in the editor.
 
 
                     <h:outputText value="CPF:"/>
-                    <p:inputText id="txtCpf" value="#{bCliente.cpf}" required="true"
-                               validatorMessage="CPF inválido"  requiredMessage="O cpf é obrigatório">
-                    <f:validateRegex
-                        pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})" />
-                    </p:inputText>   
-                    <p:message for="txtCpf"/>
+                    <p:inputMask id="cpf" value="#{bCliente.cpf}" mask="999.999.999-99" required="true"
+                                requiredMessage="O cpf é obrigatório" />
+                    <p:message for="cpf"/> 
 
                     <h:outputText value="Telefone:"/>
-                    <p:inputText id="txtTelefone" value="#{bCliente.telefone}" required="true"
+                    <p:inputMask id="txtTelefone" value="#{bCliente.telefone}" mask="(99) 99999-9999" required="true"
                                  requiredMessage="O telefone é obrigatório"/>
                     <p:message for="txtTelefone"/>
 

@@ -25,131 +25,128 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
  * @author Thiago Cavalcanti Silva - 3º TI
  */
 public class DaoManagerHiber {
+
     private static DaoManagerHiber myself = null;
-    
+
     private SessionFactory sessionFactory;
     private Session s;
 
-    private DaoManagerHiber(){
+    private DaoManagerHiber() {
 
-    try{
+        try {
 
-        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        s = sessionFactory.openSession();
-        
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            s = sessionFactory.openSession();
 
-    }catch(Throwable th){
+        } catch (Throwable th) {
 
-        System.err.println("Enitial SessionFactory creation failed"+th);
+            System.err.println("Enitial SessionFactory creation failed" + th);
 
-        throw new ExceptionInInitializerError(th);
+            throw new ExceptionInInitializerError(th);
+
+        }
 
     }
 
-  }
-    
-    public static DaoManagerHiber getInstance(){
-        if(myself==null)
+    public static DaoManagerHiber getInstance() {
+        if (myself == null) {
             myself = new DaoManagerHiber();
-        
+        }
+
         return myself;
     }
-  
-    public void persist(Object o){
-        
+
+    public void persist(Object o) {
+
         Transaction tr = null;
-        
+
         s.close();
-        
+
         s = sessionFactory.openSession();
-        
+
         tr = s.beginTransaction();
-        
+
         s.save(o);
-        
+
         tr.commit();
-        
+
         //s.close();
     }
-    
-    public List recover(String hql){
+
+    public List recover(String hql) {
         Transaction tr = null;
-        
-        s.close();
-        
-         s = sessionFactory.openSession();
-         
-         tr = s.beginTransaction();
-        
-        Query query = s.createQuery(hql);
-        
-        //s.close();
-        
-        return query.list();
-    }
-    
-    public List recoverSQL(String sql){
-        Transaction tr = null;
-        
-        s.close();
-        
-        s = sessionFactory.openSession();
-        
-        tr = s.beginTransaction();  
-        
-        Query query = s.createSQLQuery(sql);
-        
-        return query.list();
-    }
-    
-    public List recover(Object o){
-        
-        Criteria c = s.createCriteria(o.getClass());
-        
-        c.add(Example.create(o).enableLike(MatchMode.ANYWHERE).ignoreCase().excludeProperty("codigo"));
-        
-        List l = c.list();
-        s.close();
-        
-        return l;
-    }
-    
-    public void update(Object o) {
-        Transaction tr = null;
-        
+
+        if (s.isOpen()) {
             s.close();
             s = sessionFactory.openSession();
-            tr = s.beginTransaction();  
-        
-        
-        s.update(o);
-        
-        //s.close();
-        
-        tr.commit();
-        
-        
+        }
+
+        tr = s.beginTransaction();
+
+        Query query = s.createQuery(hql);
+
+      
+        return query.list();
     }
-    
-    public void delete(Object o){
+
+    public List recoverSQL(String sql) {
         Transaction tr = null;
-        
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();
-        
+
+        s.close();
+
+        s = sessionFactory.openSession();
+
+        tr = s.beginTransaction();
+
+        Query query = s.createSQLQuery(sql);
+
+        return query.list();
+    }
+
+    public List recover(Object o) {
+
+        Criteria c = s.createCriteria(o.getClass());
+
+        c.add(Example.create(o).enableLike(MatchMode.ANYWHERE).ignoreCase().excludeProperty("codigo"));
+
+        List l = c.list();
+        s.close();
+
+        return l;
+    }
+
+    public void update(Object o) {
+        Transaction tr = null;
+
+        s.close();
+        s = sessionFactory.openSession();
+        tr = s.beginTransaction();
+
+        s.update(o);
+
         //s.close();
-        
-        s.delete(o);
-        
         tr.commit();
-        
+
+    }
+
+    public void delete(Object o) {
+        Transaction tr = null;
+
+        s.close();
+        s = sessionFactory.openSession();
+        tr = s.beginTransaction();
+
+        //s.close();
+        s.delete(o);
+
+        tr.commit();
+
         //s.close();
     }
-    
-    public static void main(String args[]){
+
+    public static void main(String args[]) {
         SchemaExport se = new SchemaExport(new AnnotationConfiguration().configure());
-		se.create(true, true);
+        se.create(true, true);
     }
-    
+
 }

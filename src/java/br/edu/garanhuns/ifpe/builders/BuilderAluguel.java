@@ -8,6 +8,8 @@ package br.edu.garanhuns.ifpe.builders;
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Aluguel;
 import br.edu.garanhuns.ifpe.entidades.Filme;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -18,22 +20,22 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean(name = "bAluguel")
 @ViewScoped
-public class BuilderAluguel {
+public class BuilderAluguel implements Serializable {
 
-    private List<Cliente> ListaClientes;
+    private Cliente cliente;
 
     private List<Filme> ListaFilmes;
-    private String dataEntrega;
+    private Date dataEntrega;
     private double valorEmprestimo;
     private double valorMulta;
-    private String dataEmprestimo;
+    private Date dataEmprestimo;
     private int cod;
 
-    public String getDataEntrega() {
+    public Date getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(String dataEntrega) {
+    public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -45,24 +47,24 @@ public class BuilderAluguel {
         this.valorMulta = valorMulta;
     }
 
-    public String getDataEmprestimo() {
+    public Date getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
     public Aluguel criarAluguel() {
-        return new Aluguel(cod, ListaClientes, ListaFilmes, dataEntrega, valorEmprestimo, dataEmprestimo);
+        return new Aluguel( cliente, ListaFilmes, dataEmprestimo,dataEntrega,valorEmprestimo);
     }
 
-    public List<Cliente> getListaClientes() {
-        return ListaClientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setListaClientes(List<Cliente> ListaClientes) {
-        this.ListaClientes = ListaClientes;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<Filme> getListaFilmes() {

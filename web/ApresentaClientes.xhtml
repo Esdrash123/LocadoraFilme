@@ -15,20 +15,20 @@
         <p:messages />
         <h:form id="formApresentarCliente">
             <p:dataTable id="tabelaCliente" value="#{cCliente.cliente}" var="item"
-                         rowKey="#{item.nome}" paginator="true" rows="4" selectionMode="single"
+                         rowKey="#{item.nome}" paginator="true" rows="10" selectionMode="single"
                          selection="#{cCliente.selectCliente}">
 
                 <p:column sortBy="#{item.nome}" filterBy="#{item.nome}" headerText="Nome" footerText="Nome">
                     <h:outputText value="#{item.nome}"/>
                 </p:column>
 
-                <p:column sortBy="#{item.cpf}" filterBy="#{item.cpf}" headerText="CPF" footerText="CPF" >
+                <p:column  headerText="CPF" footerText="CPF" >
                     <h:outputText value="#{item.cpf}"/>
                 </p:column>
-                <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}" headerText="Telefone" footerText="Telefone" >
+                <p:column  headerText="Telefone" footerText="Telefone" >
                     <h:outputText value="#{item.telefone}"/>
                 </p:column>
-                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}" headerText="Endere�o" footerText="Endere�o" >
+                <p:column  headerText="Endereco" footerText="Endereco" >
                     <h:outputText value="#{item.endereco}"/>
                 </p:column>
 

@@ -5,14 +5,18 @@
  */
 package br.edu.garanhuns.ifpe.entidades;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,30 +30,31 @@ public class Aluguel {
     @GeneratedValue
     private int id;
 
-    @OneToMany
-    private List<Cliente> ListaClientes;
-    @OneToMany
+    @OneToOne
+    private Cliente cliente;
+    @ManyToMany
     private List<Filme> ListaFilmes;
     @Column(length = 100)
     private int cod;
     @Column(length = 100, nullable = false)
-    private String dataEntrega;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataEntrega;
     @Column(length = 30)
     private double valorEmprestimo;
     @Column(length = 30)
     private double valorMulta;
     @Column(length = 100)
-    private String dataEmprestimo;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataEmprestimo;
 
-    public Aluguel(int cod, List<Cliente> ListaClientes, List<Filme> ListaFilmes, String dataEntrega, double valorEmprestimo, String dataEmprestimo) {
-        this.ListaClientes = ListaClientes;
+    public Aluguel(Cliente cliente, List<Filme> ListaFilmes, Date dataEmprestimo, Date dataEntrega, double valorEmprestimo) {
+        this.cliente = cliente;
         this.ListaFilmes = ListaFilmes;
         this.dataEntrega = dataEntrega;
         this.valorEmprestimo = valorEmprestimo;
         this.dataEmprestimo = dataEmprestimo;
-        this.cod = cod;
+
     }
-    
 
     @Deprecated
     public Aluguel() {
@@ -71,12 +76,12 @@ public class Aluguel {
         this.valorEmprestimo = valorEmprestimo;
     }
 
-    public List<Cliente> getListaClientes() {
-        return ListaClientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setListaClientes(List<Cliente> ListaClientes) {
-        this.ListaClientes = ListaClientes;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<Filme> getListaFilmes() {
@@ -87,11 +92,11 @@ public class Aluguel {
         this.ListaFilmes = ListaFilmes;
     }
 
-    public String getDataEntrega() {
+    public Date getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(String dataEntrega) {
+    public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -103,12 +108,20 @@ public class Aluguel {
         this.valorMulta = valorMulta;
     }
 
-    public String getDataEmprestimo() {
+    public Date getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public String getFilmes() {
+        String ret = "";
+        for (Filme f : ListaFilmes) {
+            ret += f.getTitulo() + "\n";
+        }
+        return ret;
     }
 
 }

@@ -5,11 +5,19 @@
  */
 package br.edu.garanhuns.ifpe.controladores;
 
+import br.edu.garanhuns.ifpe.builders.BuilderAluguel;
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Aluguel;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioAluguel;
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,7 +30,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "cAluguel")
 @SessionScoped
 
-public class AluguelController {
+public class AluguelController implements Serializable {
 
     private RepositorioGenerico<Aluguel, String> repositorioAluguel = null;
     private Aluguel selectAluguel;
@@ -32,6 +40,9 @@ public class AluguelController {
     }
 
     public String inserir(Aluguel aluguel) {
+
+        aluguel.setValorEmprestimo(0);
+  
 
         this.repositorioAluguel.inserir(aluguel);
 
@@ -55,7 +66,18 @@ public class AluguelController {
 
         this.repositorioAluguel.alterar(aluguel);
 
-        return "ApresentaFilmes.xhtml";
+        return "ApresentaAluguel.xhtml";
+    }
+
+    public int calcularDias(BuilderAluguel aluguel) throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        Date data1 = aluguel.getDataEmprestimo();
+        Date data2 = aluguel.getDataEntrega();
+
+        long diffInMillies = Math.abs(data2.getTime() - data1.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return (int) diff;
     }
 
     public void deletar(Aluguel aluguel) {
@@ -77,4 +99,5 @@ public class AluguelController {
     public void setSelectFilme(Aluguel selectAluguel) {
         this.selectAluguel = selectAluguel;
     }
+
 }

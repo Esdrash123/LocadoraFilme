@@ -21,8 +21,10 @@ import javax.faces.bean.ViewScoped;
 public class BuilderFilme {
     private String titulo;
     private String sinopse;
-    private String dataLancamento;
+    private Date dataLancamento;
     private String faixaIndicativa;
+    private String categoria;
+    private double valorFilme;
     private boolean disponivel;
 
     public String getTitulo() {
@@ -41,11 +43,11 @@ public class BuilderFilme {
         this.sinopse = sinopse;
     }
 
-    public String getDataLancamento() {
+    public Date getDataLancamento() {
         return dataLancamento;
     }
 
-    public void setDataLancamento(String dataLancamento) {
+    public void setDataLancamento(Date dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
 
@@ -66,6 +68,23 @@ public class BuilderFilme {
     }
 
  public Filme criarFilme (){
-        return new Filme(titulo, sinopse,dataLancamento,faixaIndicativa,disponivel);
+        return new Filme(titulo, dataLancamento,faixaIndicativa,categoria,valorFilme,sinopse,disponivel);
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public double getValorFilme() {
+        return valorFilme;
+    }
+
+    public void setValorFilme(double valorFilme) {
+        this.valorFilme = valorFilme;
+    }
+ 
 }

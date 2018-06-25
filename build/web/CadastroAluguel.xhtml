@@ -11,24 +11,23 @@
         <ui:include src='Menu.xhtml'/>
         <p:messages/>
         <h:form id="CadastroAluguelform">
-            <p:fieldset legend="Cadastro de Aluguel" style="width: 60%">
-                <p:dataTable id="listaClientes" var="item" value="#{cCliente.cliente}" selection="#{bAluguel.listaClientes}" rowKey="#{item.id}">
+            <p:fieldset legend="Cadastro de Aluguel" style="width: 70%">
+                <p:dataTable id="listaClientes" var="item" value="#{cCliente.cliente }" paginator="true" selection="#{bAluguel.cliente}" rows="5" rowKey="#{item.id}">
                     <f:facet name="header">
                         Clientes
                     </f:facet>
                     <p:column selectionMode="single" style="width:16px;text-align:center"/>
-                    <p:column headerText="Nome">
+                    <p:column headerText="Nome" filterBy="#{item.nome}">
                         <h:outputText value="#{item.nome}" />
                     </p:column>
+                </p:dataTable>
 
-                </p:dataTable> 
-
-                <p:dataTable id="checkboxDT" var="item" value="#{cFilme.filme}" selection="#{bAluguel.listaFilmes}" rowKey="#{item.id}" style="margin-bottom:0">
+                <p:dataTable id="listaFilmes" var="item" value="#{ cFilme.filme}" selection="#{ bAluguel.listaFilmes}" rowKey="#{item.id}" style="margin-bottom:0" paginator="true" rows="5">
                     <f:facet name="header">
                         Filmes
                     </f:facet>
                     <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
-                    <p:column headerText="Titulo">
+                    <p:column headerText="Titulo"  filterBy="#{item.titulo}">
                         <h:outputText value="#{item.titulo}" />
                     </p:column>
                     <p:column headerText="Sinopse">
@@ -42,10 +41,26 @@
                     </p:column>
                 </p:dataTable>
 
-                <p:panelGrid columns="3" >
-                    
+                <p:panelGrid columns="2" >                  
+
+                    <p:outputLabel for="dataEmprestimo" value="Data do emprestimo" />
+                    <p:calendar id="dataEmprestimo" value="#{bAluguel.dataEmprestimo}" showOn="button" />
+
+                    <p:outputLabel for="dataEntrega" value="Data da entrega" />
+                    <p:calendar id="dataEntrega" value="#{bAluguel.dataEntrega}" showOn="button" />
+
                 </p:panelGrid>
+                <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
             </p:fieldset>
+            <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
+                <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
+                <f:facet name="footer">
+                    <p:commandButton value="cadastrar" update="CadastroAluguelform" action="#{cAluguel.inserir(bAluguel.criarAluguel())}"/>
+
+
+                    <p:commandButton value="não" onclick="PF('painel').hide()"/>
+                </f:facet>
+            </p:dialog>
         </h:form>
 
     </h:body>
