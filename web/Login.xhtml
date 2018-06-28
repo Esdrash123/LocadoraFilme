@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link type="text/css"
+              href="css/custom-theme/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+    </h:head>
+    <h:body style="font-size:13px;">
+        <h:outputLink id="loginLink" value="javascript:void(0)"
+                      onclick="PF('dlg').show();" title="login">
+            <p:graphicImage value="botaoLogin.png"  />
+        </h:outputLink> 
+
+        <p:growl id="growl" showDetail="true" life="3000" />
+
+        <p:dialog id="dialog" header="Login" widgetVar="dlg">
+            <h:form>
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="username" value="Username:" />
+                    <p:inputText value="#{loginController.usuario}" id="username"
+                                 required="true" label="username" />
+
+                    <h:outputLabel for="password" value="Password:" />
+                    <h:inputSecret value="#{loginController.senha}" id="password"
+                                   required="true" label="password" />
+
+                    <f:facet name="footer">
+                        <p:commandButton id="loginButton" value="Login" update=":growl"
+                                         actionListener="#{loginController.login}"
+                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                    </f:facet>
+                </h:panelGrid>
+
+            </h:form>
+        </p:dialog>
+
+    </h:body>
+</html>

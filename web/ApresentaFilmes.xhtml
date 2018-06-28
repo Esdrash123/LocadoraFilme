@@ -43,7 +43,6 @@
                     <h:outputText value="#{item.valorFilme}"/>
                 </p:column>
                 <p:column  headerText="Disponivel" footerText="Disponivel" >
-
                     <c:choose>
                         <c:when  test ="${!item.disponivel}">
                             <h:outputText value="Sim"/>
@@ -52,8 +51,6 @@
                             <h:outputText value="Nao"/>
                         </c:otherwise>
                     </c:choose>
-
-
                 </p:column>
 
             </p:dataTable>

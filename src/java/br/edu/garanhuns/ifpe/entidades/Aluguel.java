@@ -34,8 +34,6 @@ public class Aluguel {
     private Cliente cliente;
     @ManyToMany
     private List<Filme> ListaFilmes;
-    @Column(length = 100)
-    private int cod;
     @Column(length = 100, nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEntrega;
@@ -59,15 +57,7 @@ public class Aluguel {
     @Deprecated
     public Aluguel() {
     }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
-
+ 
     public double getValorEmprestimo() {
         return valorEmprestimo;
     }
@@ -119,7 +109,7 @@ public class Aluguel {
     public String getFilmes() {
         String ret = "";
         for (Filme f : ListaFilmes) {
-            ret += f.getTitulo() + "\n";
+            ret += f.getTitulo()+" |" + "\n";
         }
         return ret;
     }

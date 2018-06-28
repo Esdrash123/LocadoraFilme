@@ -29,7 +29,7 @@ public class BuilderAluguel implements Serializable {
     private double valorEmprestimo;
     private double valorMulta;
     private Date dataEmprestimo;
-    private int cod;
+    
 
     public Date getDataEntrega() {
         return dataEntrega;
@@ -73,14 +73,6 @@ public class BuilderAluguel implements Serializable {
 
     public void setListaFilmes(List<Filme> ListaFilmes) {
         this.ListaFilmes = ListaFilmes;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
     }
 
     public double getValorEmprestimo() {

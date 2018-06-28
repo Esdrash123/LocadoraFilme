@@ -8,6 +8,7 @@ package br.edu.garanhuns.ifpe.controladores;
 import br.edu.garanhuns.ifpe.builders.BuilderAluguel;
 import br.edu.garanhuns.ifpe.entidades.Cliente;
 import br.edu.garanhuns.ifpe.entidades.Aluguel;
+import br.edu.garanhuns.ifpe.entidades.Filme;
 import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioAluguel;
 import java.io.Serializable;
@@ -41,27 +42,27 @@ public class AluguelController implements Serializable {
 
     public String inserir(Aluguel aluguel) {
 
-        aluguel.setValorEmprestimo(0);
-  
+       
+        aluguel.setValorEmprestimo(valorAluguel(aluguel.getListaFilmes()));
 
         this.repositorioAluguel.inserir(aluguel);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("OK!" + "O Aluguel " + aluguel.getCod() + " foi cadastrado com sucesso!"));
+                addMessage(null, new FacesMessage("OK!" + "O Aluguel " + " foi cadastrado com sucesso!"));
 
         return "ApresentaAluguel.xhtml";
     }
 
     public String atualizar(Aluguel aluguel) {
 
-        if (((RepositorioAluguel) this.repositorioAluguel).recuperar(aluguel.getCod()) != null) {
+        if (((RepositorioAluguel) this.repositorioAluguel).recuperar(aluguel.getCliente()) != null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Filme como mesmo titulo já cadastrado!"));
             return null;
 
         }
 
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Parabéns", "o filme '" + aluguel.getCod() + "' , com faxetaria de '"
+                new FacesMessage("Parabéns", "o filme '" + "' , com faxetaria de '"
                         + aluguel.getDataEntrega() + "' foi alterado com sucesso!"));
 
         this.repositorioAluguel.alterar(aluguel);
@@ -98,6 +99,26 @@ public class AluguelController implements Serializable {
 
     public void setSelectFilme(Aluguel selectAluguel) {
         this.selectAluguel = selectAluguel;
+    }
+
+    public double valorAluguel(List<Filme> listaFilmes) {
+        double valor = 0;
+        for (Filme f : listaFilmes) {
+            valor += f.getValorFilme();
+        }
+        return valor;
+    }
+
+    public boolean verificarDisponivel(List<Filme> listaFilmes) {
+        boolean disponivel = true;
+        for (Filme f : listaFilmes) {
+            if (f.getDisponivel() == true) {
+                disponivel = false;
+            } else {
+                disponivel = true;
+            }
+        }
+        return disponivel;
     }
 
 }

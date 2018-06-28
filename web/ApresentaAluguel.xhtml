@@ -20,7 +20,7 @@ and open the template in the editor.
         <p:messages />
         <h:form id="formApresentarAlugel">
             <p:dataTable id="tabelaFilme" value="#{cAluguel.aluguel}" var="item"
-                         rowKey="#{item.cod}" paginator="true" rows="6" selectionMode="single"
+                         rowKey="#{item.cliente}" paginator="true" rows="6" selectionMode="single"
                          selection="#{cAluguel.selectAluguel}">
 
                 <p:column sortBy="#{item.cliente}" filterBy="#{item.cliente}" headerText="cliente" footerText="cliente">
@@ -31,19 +31,15 @@ and open the template in the editor.
                     <h:outputText value="#{item.filmes}"/>
                 </p:column>
 
-                <p:column sortBy="#{item.cod}" filterBy="#{item.cod}" headerText="cod" footerText="cod" >
-                    <h:outputText value="#{item.cod}"/>
-                </p:column>
-
-                <p:column sortBy="#{item.dataEntrega}" filterBy="#{item.dataEntrega}" headerText="D.Entrega" footerText="D.Entrega" >
+                <p:column  headerText="D.Entrega" footerText="D.Entrega" >
                     <h:outputText value="#{item.dataEntrega}"/>
                 </p:column>
 
-                <p:column sortBy="#{item.dataEmprestimo}" filterBy="#{item.dataEmprestimo}" headerText="D.Emprestimo" footerText="D.Emprestimo" >
+                <p:column  headerText="D.Emprestimo" footerText="D.Emprestimo" >
                     <h:outputText value="#{item.dataEmprestimo}"/>
                 </p:column>
 
-                <p:column sortBy="#{item.valorEmprestimo}" filterBy="#{item.valorEmprestimo}" headerText="V.Emprestimo" footerText="V.Emprestimo" >
+                <p:column  headerText="V.Emprestimo" footerText="V.Emprestimo" >
                     <h:outputText value="#{item.valorEmprestimo}"/>
                 </p:column>
 
