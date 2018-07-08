@@ -25,7 +25,7 @@ public class BuilderFilme {
     private String faixaIndicativa;
     private String categoria;
     private double valorFilme;
-    private boolean disponivel;
+    private int estoque;
 
     public String getTitulo() {
         return titulo;
@@ -59,16 +59,16 @@ public class BuilderFilme {
         this.faixaIndicativa = faixaIndicativa;
     }
 
-    public boolean getDisponivel() {
-        return disponivel;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
  public Filme criarFilme (){
-        return new Filme(titulo, dataLancamento,faixaIndicativa,categoria,valorFilme,sinopse,disponivel);
+        return new Filme(titulo, dataLancamento,faixaIndicativa,categoria,valorFilme,sinopse,estoque);
     }
 
     public String getCategoria() {

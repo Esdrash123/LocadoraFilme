@@ -28,7 +28,7 @@ and open the template in the editor.
                     <p:message for="txtTitulo"/>
 
                     <h:outputText value="Data de lançamento:"/>
-                    <p:calendar id="german" value="#{bFilme.dataLancamento}" locale="de" navigator="true" pattern="yyyy-MMM-dd" required="true"
+                    <p:calendar id="german" value="#{bFilme.dataLancamento}"  navigator="true" pattern="yyyy-MMM-dd" required="true"
                                 requiredMessage="A data de lancamento é obrigatória" />
                     <p:message for="german"/> 
 
@@ -74,6 +74,12 @@ and open the template in the editor.
                     <p:inputTextarea id="txtSinopse" value="#{bFilme.sinopse}" required="true"
                                      requiredMessage="A sinopse é obrigatória"/>
                     <p:message for="txtSinopse"/>
+                    
+                     <h:outputText value="Estoque"/>
+                     <p:inputText id="txtEstoque" value="#{bFilme.estoque}" required="true"
+                                     requiredMessage="O Estoque é obrigatória"/>
+                    <p:message for="txtEstoque"/>
+
 
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>

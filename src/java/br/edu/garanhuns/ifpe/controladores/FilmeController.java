@@ -32,7 +32,7 @@ public class FilmeController implements Serializable {
     }
 
     public String inserir(Filme filme) {
-        filme.setDisponivel(true);
+        
         this.repositorioFilme.inserir(filme);
 
         FacesContext.getCurrentInstance().

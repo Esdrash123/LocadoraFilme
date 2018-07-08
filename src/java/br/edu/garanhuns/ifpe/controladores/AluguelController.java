@@ -42,28 +42,17 @@ public class AluguelController implements Serializable {
 
     public String inserir(Aluguel aluguel) {
 
-       
         aluguel.setValorEmprestimo(valorAluguel(aluguel.getListaFilmes()));
-
+        
         this.repositorioAluguel.inserir(aluguel);
 
         FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("OK!" + "O Aluguel " + " foi cadastrado com sucesso!"));
+                addMessage(null, new FacesMessage("OK! O Aluguel  foi cadastrado com sucesso!"));
 
         return "ApresentaAluguel.xhtml";
     }
 
     public String atualizar(Aluguel aluguel) {
-
-        if (((RepositorioAluguel) this.repositorioAluguel).recuperar(aluguel.getCliente()) != null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Filme como mesmo titulo já cadastrado!"));
-            return null;
-
-        }
-
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Parabéns", "o filme '" + "' , com faxetaria de '"
-                        + aluguel.getDataEntrega() + "' foi alterado com sucesso!"));
 
         this.repositorioAluguel.alterar(aluguel);
 
@@ -109,16 +98,5 @@ public class AluguelController implements Serializable {
         return valor;
     }
 
-    public boolean verificarDisponivel(List<Filme> listaFilmes) {
-        boolean disponivel = true;
-        for (Filme f : listaFilmes) {
-            if (f.getDisponivel() == true) {
-                disponivel = false;
-            } else {
-                disponivel = true;
-            }
-        }
-        return disponivel;
-    }
-
+   
 }

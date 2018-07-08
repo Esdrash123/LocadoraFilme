@@ -38,19 +38,15 @@
                     <p:column headerText="Faixa indicativa">
                         <h:outputText value="#{item.faixaIndicativa}" />
                     </p:column>
-                     <p:column headerText="Preco">
-                         <h:outputText value="#{item.valorFilme}" />
+                    <p:column headerText="Preco">
+                        <h:outputText value="#{item.valorFilme}" />
                     </p:column>
-                    <p:column  headerText="Disponivel" footerText="Disponivel" >
-                    <c:choose>
-                        <c:when  test ="${!item.disponivel}">
-                            <h:outputText value="Sim"/>
-                        </c:when>
-                        <c:otherwise>
-                            <h:outputText value="Nao"/>
-                        </c:otherwise>
-                    </c:choose>
-                </p:column>
+                    <p:column  headerText="Estoque" footerText="Estoque" >
+                        <h:outputText value="#{item.estoque}"/>
+                    </p:column>
+                     <p:column  headerText="Aluguel" footerText="aluguel" >
+                         <h:commandButton value="retirar do estoque" action="#{item.reduzirEstoque()}"/>
+                    </p:column>
                 </p:dataTable>
 
                 <p:panelGrid columns="2" >                  

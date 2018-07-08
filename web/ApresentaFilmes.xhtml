@@ -42,15 +42,8 @@
                 <p:column  headerText="Valor" footerText="Valor" >
                     <h:outputText value="#{item.valorFilme}"/>
                 </p:column>
-                <p:column  headerText="Disponivel" footerText="Disponivel" >
-                    <c:choose>
-                        <c:when  test ="${!item.disponivel}">
-                            <h:outputText value="Sim"/>
-                        </c:when>
-                        <c:otherwise>
-                            <h:outputText value="Nao"/>
-                        </c:otherwise>
-                    </c:choose>
+                <p:column  headerText="Estoque" footerText="Estoque" >
+                    <h:outputText value="#{item.estoque}"/>
                 </p:column>
 
             </p:dataTable>

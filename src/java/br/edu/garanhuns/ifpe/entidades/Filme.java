@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Filme")
-public class Filme {
+public class  Filme {
 
     @Id
     @GeneratedValue
@@ -44,17 +44,17 @@ public class Filme {
     @Column(length = 30)
     private double valorFilme;
 
-    @Column(length = 5)
-    private boolean disponivel;
+    @Column(length = 100)
+    private int estoque;
 
-    public Filme(String titulo, Date dataLancamento, String faixaIndicativa,String categoria, Double valorFilme, String sinopse, boolean disponivel) {
+    public Filme(String titulo, Date dataLancamento, String faixaIndicativa,String categoria, Double valorFilme, String sinopse, int estoque) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.dataLancamento = dataLancamento;
         this.faixaIndicativa = faixaIndicativa;
         this.categoria = categoria;
         this.valorFilme = valorFilme;
-        this.disponivel = disponivel;
+        this.estoque = estoque;
     }
 
     @Deprecated
@@ -101,12 +101,12 @@ public class Filme {
         this.faixaIndicativa = faixaIndicativa;
     }
 
-    public boolean getDisponivel() {
-        return disponivel;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public  void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
     public String getCategoria() {
@@ -125,4 +125,10 @@ public class Filme {
         this.valorFilme = valorFilme;
     }
 
+    public void reduzirEstoque(){
+        this.estoque--;
+    }
+     public void adicionarEstoque(){
+        this.estoque++;
+    }
 }
