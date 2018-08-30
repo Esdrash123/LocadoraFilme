@@ -6,6 +6,7 @@
 package br.edu.garanhuns.ifpe.entidades;
 
 import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Filme")
-public class  Filme {
+public class Filme {
 
     @Id
     @GeneratedValue
@@ -47,7 +48,7 @@ public class  Filme {
     @Column(length = 100)
     private int estoque;
 
-    public Filme(String titulo, Date dataLancamento, String faixaIndicativa,String categoria, Double valorFilme, String sinopse, int estoque) {
+    public Filme(String titulo, Date dataLancamento, String faixaIndicativa, String categoria, Double valorFilme, String sinopse, int estoque) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.dataLancamento = dataLancamento;
@@ -105,7 +106,7 @@ public class  Filme {
         return estoque;
     }
 
-    public  void setEstoque(int estoque) {
+    public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
 
@@ -125,10 +126,11 @@ public class  Filme {
         this.valorFilme = valorFilme;
     }
 
-    public void reduzirEstoque(){
+    public void reduzirEstoque() {
         this.estoque--;
     }
-     public void adicionarEstoque(){
+
+    public void adicionarEstoque() {
         this.estoque++;
     }
 }

@@ -57,7 +57,7 @@ public class Aluguel {
     @Deprecated
     public Aluguel() {
     }
- 
+
     public double getValorEmprestimo() {
         return valorEmprestimo;
     }
@@ -109,9 +109,29 @@ public class Aluguel {
     public String getFilmes() {
         String ret = "";
         for (Filme f : ListaFilmes) {
-            ret += f.getTitulo()+" |" + "\n";
+            ret += f.getTitulo() + " |" + "\n";
         }
         return ret;
     }
 
+    public Filme targetFilme(String id) {
+        Filme ff = null;
+        for (Filme f : ListaFilmes) {
+            if (f.getTitulo().equals( id)) {
+                return f;
+            }
+        }
+        return ff;
+    }
+
+    public void addFilme(Filme f) {
+        if (targetFilme(f.getTitulo()) != null) {
+            f.reduzirEstoque();
+        } else {
+            if (f.getEstoque() > 1) {
+                ListaFilmes.add(f);
+                f.reduzirEstoque();
+            }
+        }
+    }
 }

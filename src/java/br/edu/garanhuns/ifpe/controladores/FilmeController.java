@@ -10,6 +10,7 @@ import br.edu.garanhuns.ifpe.repositorio.comportamento.RepositorioGenerico;
 import br.edu.garanhuns.ifpe.repositorio.implementacao.RepositorioFilme;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -81,4 +82,5 @@ public class FilmeController implements Serializable {
     public void setSelectFilme(Filme selectFilme) {
         this.selectFilme = selectFilme;
     }
+    
 }
